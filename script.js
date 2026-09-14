@@ -4,6 +4,8 @@ const music = document.getElementById("bgMusic");
 const soundToggle = document.getElementById("soundToggle");
 const pageMusicToggle = document.getElementById("pageMusicToggle");
 let soundOn = false;
+// Keep the wedding soundtrack intentionally soft beneath the invitation.
+music.volume = 0.18;
 function syncMusicButtons(){const label=soundOn?"♫ Music On":"♪ Play Music";[soundToggle,pageMusicToggle].filter(Boolean).forEach(btn=>{btn.textContent=label;btn.setAttribute("aria-label",soundOn?"Pause background music":"Play background music")})}
 openBtn?.addEventListener("click",()=>{gate.classList.add("opened");document.body.classList.remove("locked");setTimeout(()=>{gate.style.display="none"},1150)});
 async function toggleMusic(e){e?.stopPropagation();if(music.paused){try{await music.play();soundOn=true}catch(_){soundOn=false}}else{music.pause();soundOn=false}syncMusicButtons()}
