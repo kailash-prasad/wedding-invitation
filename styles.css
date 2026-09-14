@@ -602,3 +602,21 @@ footer{background:linear-gradient(145deg,#5B1C25,#4A1820)}
   .day-divider.second{margin-top:38px}
   .day-divider em{max-width:none;justify-self:center}
 }
+
+/* ===== Hero crop-safe artwork refresh — 14 Sep 2026 ===== */
+.gate,
+.hero {
+  background-position: center center;
+}
+@media (min-width: 769px) {
+  .gate,
+  .hero {
+    background-position: center 46%;
+  }
+}
+@media (max-width: 768px) {
+  .gate,
+  .hero {
+    background-position: center 42%;
+  }
+}
