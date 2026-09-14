@@ -620,3 +620,21 @@ footer{background:linear-gradient(145deg,#5B1C25,#4A1820)}
     background-position: center 42%;
   }
 }
+
+/* ===== Invitation-ready refinement ===== */
+.gate,.hero{background-image:none!important;background-color:#4A1820}
+.hero-art{position:absolute;inset:0;z-index:0;display:block;overflow:hidden}
+.hero-art img{width:100%;height:100%;object-fit:cover;object-position:50% 54%;display:block}
+.gate-shade{z-index:1;background:linear-gradient(180deg,rgba(38,12,13,.07),rgba(38,12,13,.14) 48%,rgba(38,12,13,.50));position:absolute;inset:0}
+.gate-pattern{z-index:1;opacity:.03}.gate::after,.hero::before{z-index:1;background:radial-gradient(ellipse at 50% 43%,rgba(48,19,17,.25),rgba(48,19,17,.10) 43%,rgba(48,19,17,.20) 100%)}
+.hero-inner,.gate-content{z-index:3}.hero .corner{z-index:2}
+.page-music-toggle{position:fixed;right:18px;top:18px;z-index:950;border:1px solid rgba(197,160,90,.72);background:rgba(74,24,32,.78);backdrop-filter:blur(10px);color:#FFF9EE;border-radius:999px;padding:11px 15px;min-height:44px;cursor:pointer;font-size:.72rem;letter-spacing:.08em;box-shadow:0 8px 30px rgba(48,14,20,.18)}
+body.locked .page-music-toggle{opacity:0;pointer-events:none}.skip-link{position:fixed;left:14px;top:-80px;z-index:2000;background:#FFF9EE;color:#4A1820;padding:10px 14px;border:1px solid #C5A05A;text-decoration:none}.skip-link:focus{top:14px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #C5A05A;outline-offset:3px}.royal-btn,.sound-btn,.text-link,.gallery-item{min-height:44px}
+.portrait{position:relative}.portrait:after{content:"PHOTO PLACEHOLDER";position:absolute;left:18px;right:18px;bottom:18px;padding:8px;background:rgba(74,24,32,.58);color:#F5EBDD;font-size:.53rem;letter-spacing:.18em;text-transform:uppercase}.story-placeholder{background:rgba(255,249,238,.8)}
+.fusion-seal b{font-size:.75rem}.countdown-section .eyebrow{margin-bottom:8px}.countdown-section h2{font-size:clamp(2.5rem,5.5vw,4.6rem)}
+.event-rsvp-group{border:1px solid rgba(197,160,90,.42);padding:20px;margin:22px 0;text-align:left}.event-rsvp-group legend{padding:0 10px;color:#E9D39B;font:600 1.1rem "Cormorant Garamond",serif;letter-spacing:.04em}.event-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.event-choice{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border:1px solid rgba(255,249,238,.13);background:rgba(255,249,238,.045);cursor:pointer;line-height:1.35}.event-choice:last-child{grid-column:1/-1}.event-choice input{accent-color:#C5A05A;margin-top:2px;min-width:18px;min-height:18px}.event-choice span{color:#FFF9EE;font-size:.86rem}
+.venue-copy em{font:500 1.35rem "Cormorant Garamond",serif;color:#641B24}
+@media(max-width:768px){.hero-art img{object-position:50% 50%}.gate-content{padding-left:24px;padding-right:24px;max-width:94vw}.gate h1{font-size:clamp(3rem,15vw,5rem)}.hero{padding:86px 18px 68px}.hero-inner{max-width:94vw}.weekend-date{gap:13px}.weekend-date strong{font-size:3rem}.weekend-date span{font-size:.65rem}.day-divider{grid-template-columns:1fr!important;text-align:center;gap:7px}.day-divider span,.day-divider em{text-align:center!important}.event-grid{grid-template-columns:1fr!important;gap:18px}.event-card,.wedding-feature{min-height:auto!important;padding:34px 22px!important}.wedding-feature{grid-column:auto!important;width:auto!important;margin:0!important}.event-choice-grid{grid-template-columns:1fr}.event-choice:last-child{grid-column:auto}.page-music-toggle{right:10px;top:10px;padding:10px 12px}.countdown{grid-template-columns:repeat(2,1fr)}.countdown div:nth-child(2){border-right:0}.countdown div:nth-child(-n+2){border-bottom:1px solid rgba(230,206,146,.35)}.couple-section,.events,.story,.venue,.guest-guide,.heritage,.quote-band,.countdown-section,.gallery,.rsvp{padding-left:20px;padding-right:20px}}
+@media(max-width:420px){.gate-date{font-size:.78rem;letter-spacing:.09em}.gate-subline{font-size:1rem}.gate .eyebrow{font-size:.58rem}.weekend-date{flex-direction:column}.weekend-date i{width:72px;height:1px}.weekend-date>div{min-width:185px}.section-heading{margin-bottom:34px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal-on-scroll,.gate,.royal-btn,.guide-card{transition:none!important;animation:none!important}.petal{display:none!important}}
