@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Adwitia and Kailash Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:haldi-gaye-holud-202612@kailashprasad.com
+DTSTAMP:20260914T114300Z
+DTSTART;TZID=Asia/Kolkata:20261205T100000
+SUMMARY:Haldi / Gaye Holud · Adwitia & Kailash
+LOCATION:Vedic Village Spa Resort\, Shikharpur P.O\, Bagu\, Newtown\, Kolkata\, West Bengal 700135
+DESCRIPTION:Haldi / Gaye Holud begins at 10:00 AM. Sub-venue within Vedic Village to be announced.
+END:VEVENT
+END:VCALENDAR
