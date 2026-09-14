@@ -28,3 +28,11 @@ Latest visual refresh:
 
 DESIGN UPDATE — MAROON CONTINUITY
 The cinematic hero remains unchanged. All previously green/near-black dramatic treatments now use a warm maroon spectrum aligned to the hero: deep maroon #4A1820, oxblood #641B24, burgundy #7B2D35, rosewood #92515A, dusty maroon #B27A7E and blush wine #D8B8B5, with pearl ivory and champagne gold accents.
+
+Operational polish added (September 2026):
+- Five per-event .ics calendar downloads in /calendar
+- Countdown explicitly anchored to 2026-12-04 13:00 IST (+05:30)
+- RSVP includes adults/children, dietary notes, arrival/departure, pickup/drop, and optional Sangeet song request
+- Wedding Helpdesk, event sub-venue and dress-palette fields remain intentional placeholders until finalized
+- Gallery lightbox supports keyboard arrows and mobile swipe
+- Venue/address and Our Story copy duplication cleaned up
