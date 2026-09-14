@@ -39,3 +39,566 @@ body{background:#210207}.gate{background:radial-gradient(circle at 50% 38%,rgba(
 .rsvp{background:radial-gradient(circle at 50% 40%,rgba(23,63,54,.35),transparent 42%),linear-gradient(145deg,#54101d,#250309)}.rsvp-panel{box-shadow:0 30px 90px rgba(0,0,0,.25)}.rsvp-ornament{font:500 1.2rem "Cormorant Garamond",serif;color:var(--champagne);letter-spacing:.25em;margin:18px auto}.rsvp-ornament b{font-size:.65rem}
 footer{border-top:1px solid rgba(212,179,107,.25)}
 @media(max-width:700px){.golden-thread{left:9px;opacity:.25}.jharokha-frame{inset:16px}.jharokha-frame:before{height:120px;width:75vw}.gate-content{padding-top:50px}.portrait:after,.story-image:after{font-size:.46rem}.heritage-arch{display:none}}
+
+/* Responsive cinematic wedding background — desktop + mobile art direction */
+.gate,
+.hero {
+  background-image:
+    linear-gradient(180deg, rgba(25, 3, 7, .18) 0%, rgba(25, 3, 7, .24) 52%, rgba(25, 3, 7, .58) 100%),
+    url("assets/hero-desktop.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.gate::after,
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(20,2,6,.08) 0%, rgba(20,2,6,.10) 45%, rgba(20,2,6,.35) 100%);
+}
+.gate-content,
+.hero-inner { position: relative; z-index: 3; }
+.hero:after { z-index: 1; }
+
+@media (max-width: 768px) {
+  .gate,
+  .hero {
+    background-image:
+      linear-gradient(180deg, rgba(25, 3, 7, .12) 0%, rgba(25, 3, 7, .22) 55%, rgba(25, 3, 7, .62) 100%),
+      url("assets/hero-mobile.png");
+    background-position: center center;
+  }
+}
+
+/* ===== 2026 Editorial Heritage Palette Refresh ===== */
+:root{
+  --pearl-ivory:#F5EBDD;
+  --parchment:#E8D5B8;
+  --oxblood-new:#641B24;
+  --deep-wine:#35151A;
+  --champagne-new:#C5A05A;
+  --burnished-gold:#9B7436;
+  --deep-emerald:#1F4439;
+  --muted-sage:#75806B;
+  --terracotta-new:#A95745;
+  --sindoor:#A43A32;
+  --ink-brown:#35251F;
+  --warm-white:#FFF9EE;
+  --turmeric:#D1A64A;
+}
+
+/* Keep the photography cinematic, but create a calm readable text zone. */
+.gate,
+.hero{
+  background-image:
+    radial-gradient(ellipse at 50% 45%, rgba(44,19,16,.36) 0%, rgba(44,19,16,.22) 30%, rgba(44,19,16,.06) 54%, transparent 72%),
+    linear-gradient(180deg, rgba(28,12,9,.06) 0%, rgba(28,12,9,.09) 50%, rgba(28,12,9,.38) 100%),
+    url("assets/hero-desktop.png");
+  background-size:cover;
+  background-position:center center;
+}
+.gate::after,
+.hero::before{
+  background:radial-gradient(ellipse at center,rgba(40,17,14,.04) 0%,rgba(40,17,14,.05) 48%,rgba(40,17,14,.18) 100%);
+}
+.gate h1,
+.hero .script{color:var(--warm-white);text-shadow:0 2px 8px rgba(28,8,7,.34),0 10px 30px rgba(28,8,7,.18)}
+.gate-date,.gate-subline,.hero-copy,.venue-line,.weekend-date{ text-shadow:0 2px 10px rgba(28,8,7,.42) }
+.royal-btn{background:var(--oxblood-new);border-color:var(--champagne-new);color:var(--warm-white);box-shadow:0 12px 28px rgba(53,21,26,.2)}
+.royal-btn:hover{background:#76242d;filter:none}
+
+/* Pearl-ivory editorial sections */
+.couple-section,.story,.venue,.guest-guide{background:linear-gradient(180deg,var(--warm-white),var(--pearl-ivory));color:var(--ink-brown)}
+.section-heading h2{color:var(--oxblood-new)}
+.eyebrow.dark{color:var(--burnished-gold)}
+
+/* Champaran → Bengal: airy, editorial and culturally differentiated. */
+.heritage{
+  background:
+    linear-gradient(90deg,rgba(169,87,69,.055) 0 49.9%,rgba(164,58,50,.035) 50.1% 100%),
+    linear-gradient(180deg,var(--pearl-ivory),#F1E2CB);
+  color:var(--ink-brown);
+  text-align:center;
+}
+.heritage:before{
+  opacity:.05;
+  background-image:
+    radial-gradient(circle at 24px 24px,transparent 0 15px,var(--burnished-gold) 16px 17px,transparent 18px),
+    radial-gradient(circle at 60px 60px,transparent 0 15px,var(--terracotta-new) 16px 17px,transparent 18px);
+  background-size:84px 84px;
+}
+.heritage .section-heading.light h2{color:var(--oxblood-new)}
+.heritage .eyebrow{color:var(--burnished-gold)}
+.heritage-intro{color:#5B453C;max-width:880px}
+.heritage-arch{border-color:rgba(155,116,54,.15)}
+.heritage-grid{gap:34px}
+.heritage-card{
+  min-height:330px;
+  border:1px solid rgba(155,116,54,.3);
+  background:rgba(255,249,238,.62);
+  box-shadow:0 18px 50px rgba(83,50,35,.06);
+  backdrop-filter:none;
+}
+.heritage-card:first-child{
+  background:linear-gradient(145deg,rgba(232,213,184,.96),rgba(245,235,221,.92));
+  border-color:rgba(169,87,69,.36);
+}
+.heritage-card:last-child{
+  background:linear-gradient(145deg,rgba(255,249,238,.96),rgba(243,230,215,.96));
+  border-color:rgba(164,58,50,.30);
+}
+.heritage-card h3{color:var(--oxblood-new)}
+.heritage-card p{color:#604B43}
+.heritage-card small{color:var(--burnished-gold)}
+.heritage-card:first-child .heritage-icon{color:var(--terracotta-new)}
+.heritage-card:last-child .heritage-icon{color:var(--sindoor)}
+.fusion-seal{border-color:var(--champagne-new);color:var(--oxblood-new);background:rgba(255,249,238,.5)}
+.fusion-seal:before,.fusion-seal:after{border-color:rgba(197,160,90,.5)}
+.fusion-seal b{color:var(--burnished-gold)}
+
+/* Editorial quote: quiet ivory instead of another heavy burgundy slab. */
+.quote-band{
+  background:var(--warm-white);
+  color:var(--ink-brown);
+  border-top:1px solid rgba(197,160,90,.26);
+  border-bottom:1px solid rgba(197,160,90,.26);
+}
+.quote-band:before{opacity:.025;background-image:radial-gradient(circle at center,var(--champagne-new) 0 1px,transparent 1.5px);background-size:24px 24px}
+.quote-band blockquote{color:var(--oxblood-new);max-width:880px}
+.quote-inner p:last-child{color:var(--burnished-gold)}
+.quote-band .mini-mandala{border-color:var(--champagne-new)}
+.quote-band .mini-mandala:before,.quote-band .mini-mandala:after{border-color:var(--champagne-new)}
+
+/* Celebration chapter: each ritual gets its own restrained colour world. */
+.events{background:linear-gradient(180deg,var(--pearl-ivory),var(--warm-white));color:var(--ink-brown)}
+.day-banner{background:rgba(255,249,238,.88);border-color:rgba(197,160,90,.55)}
+.mehendi-card{background:linear-gradient(145deg,#EEF0E7,#E2E5D9);border-color:rgba(117,128,107,.5)}
+.mehendi-card .event-icon,.mehendi-card .event-kicker{color:#66705E}
+.sangeet-card{background:linear-gradient(145deg,var(--deep-emerald),#17352E);border-color:rgba(197,160,90,.55);box-shadow:0 20px 60px rgba(31,68,57,.16)}
+.sangeet-card h3,.sangeet-card p,.sangeet-card .event-place{color:var(--warm-white)!important}
+.sangeet-card .small-label,.sangeet-card .event-icon,.sangeet-card .event-kicker{color:#DFC789}
+.sangeet-card .dress-tag{color:#F5EBDD;border-color:rgba(223,199,137,.6)}
+.bidhi-card{background:linear-gradient(145deg,#F0DFC4,#E8D5B8);border-color:rgba(169,87,69,.32)}
+.bidhi-card .event-icon,.bidhi-card .event-kicker{color:var(--terracotta-new)}
+.haldi-card{background:linear-gradient(145deg,#F4E8BC,#E4C66E);border-color:rgba(155,116,54,.38)}
+.haldi-card .event-icon,.haldi-card .event-kicker{color:#8D681E}
+.wedding-feature{
+  background:linear-gradient(145deg,var(--deep-wine),var(--oxblood-new));
+  border-color:rgba(197,160,90,.7);
+  box-shadow:0 24px 70px rgba(53,21,26,.2);
+}
+.wedding-feature h3,.wedding-feature p,.wedding-feature .event-place{color:var(--warm-white)!important}
+.wedding-feature .small-label,.wedding-feature .event-icon,.wedding-feature .event-kicker{color:#E1C888}
+.wedding-feature .dress-tag{color:#F5EBDD;border-color:rgba(225,200,136,.58)}
+.event-card:before{border-color:rgba(155,116,54,.18)}
+
+/* The darker chapters now feel intentional instead of repetitive. */
+.countdown-section{background:linear-gradient(145deg,var(--deep-wine),#241014)}
+.countdown-section:before{opacity:.035}
+.gallery{background:radial-gradient(circle at 50% 28%,rgba(31,68,57,.6),transparent 48%),linear-gradient(145deg,#17352E,#241014)}
+.rsvp{background:radial-gradient(circle at 50% 28%,rgba(31,68,57,.32),transparent 46%),linear-gradient(145deg,var(--oxblood-new),var(--deep-wine))}
+.rsvp-panel{background:rgba(53,21,26,.68);border-color:rgba(197,160,90,.48)}
+footer{background:#241014}
+.golden-thread{background:linear-gradient(transparent,var(--champagne-new) 15%,var(--champagne-new) 85%,transparent)}
+.golden-thread span{border-color:var(--champagne-new);background:var(--oxblood-new)}
+
+@media(max-width:768px){
+  .gate,.hero{
+    background-image:
+      radial-gradient(ellipse at 50% 43%,rgba(44,19,16,.34) 0%,rgba(44,19,16,.18) 34%,rgba(44,19,16,.05) 58%,transparent 76%),
+      linear-gradient(180deg,rgba(28,12,9,.04) 0%,rgba(28,12,9,.07) 55%,rgba(28,12,9,.34) 100%),
+      url("assets/hero-mobile.png");
+    background-position:center center;
+  }
+  .heritage{background:linear-gradient(180deg,var(--pearl-ivory),#F1E2CB)}
+  .heritage-grid{gap:22px}
+  .fusion-seal{width:150px;height:150px}
+}
+
+/* ===== Maroon Continuity Refresh — aligned to the cinematic hero ===== */
+:root{
+  --hero-maroon-deep:#4A1820;
+  --hero-maroon:#641B24;
+  --hero-burgundy:#7B2D35;
+  --hero-rosewood:#92515A;
+  --hero-dusty:#B27A7E;
+  --hero-blush:#D8B8B5;
+  --hero-blush-pale:#E9D5D1;
+  --hero-champagne:#C5A05A;
+  --hero-ivory:#F5EBDD;
+  --hero-warm-white:#FFF9EE;
+  --hero-ink:#35251F;
+}
+
+/* Previously dark/green chapters return to a single warm maroon family. */
+.heritage{
+  background:
+    radial-gradient(circle at 50% 12%, rgba(216,184,181,.16), transparent 35%),
+    linear-gradient(145deg, #7B2D35 0%, #641B24 52%, #561B23 100%);
+  color:var(--hero-warm-white);
+}
+.heritage:before{
+  opacity:.055;
+  background-image:
+    radial-gradient(circle at 24px 24px,transparent 0 15px,var(--hero-champagne) 16px 17px,transparent 18px),
+    radial-gradient(circle at 60px 60px,transparent 0 15px,#E8C8C5 16px 17px,transparent 18px);
+  background-size:84px 84px;
+}
+.heritage .section-heading.light h2{color:var(--hero-warm-white)}
+.heritage .eyebrow{color:#E6CB8B}
+.heritage-intro{color:#F2DED7}
+.heritage-card{
+  background:rgba(255,249,238,.065);
+  border-color:rgba(229,203,139,.35);
+  box-shadow:0 18px 55px rgba(62,15,24,.14);
+}
+.heritage-card:first-child{
+  background:linear-gradient(145deg,rgba(146,81,90,.62),rgba(123,45,53,.52));
+  border-color:rgba(229,203,139,.34);
+}
+.heritage-card:last-child{
+  background:linear-gradient(145deg,rgba(178,122,126,.34),rgba(123,45,53,.56));
+  border-color:rgba(229,203,139,.34);
+}
+.heritage-card h3{color:var(--hero-warm-white)}
+.heritage-card p{color:#F3E3DE}
+.heritage-card small{color:#E8CB8A}
+.heritage-card:first-child .heritage-icon,
+.heritage-card:last-child .heritage-icon{color:#E8CB8A}
+.fusion-seal{
+  color:var(--hero-warm-white);
+  background:rgba(74,24,32,.36);
+  border-color:var(--hero-champagne);
+}
+.fusion-seal b{color:#E8CB8A}
+.fusion-seal:before,.fusion-seal:after{border-color:rgba(229,203,139,.46)}
+
+/* Quote remains maroon, but lighter and airier than the original template. */
+.quote-band{
+  background:
+    radial-gradient(circle at 50% 40%, rgba(216,184,181,.20), transparent 42%),
+    linear-gradient(145deg,#92515A,#7B2D35);
+  color:var(--hero-warm-white);
+  border-top:1px solid rgba(197,160,90,.26);
+  border-bottom:1px solid rgba(197,160,90,.26);
+}
+.quote-band blockquote{color:var(--hero-warm-white);text-shadow:0 2px 12px rgba(74,24,32,.16)}
+.quote-inner p:last-child{color:#F0D69A}
+.quote-band .mini-mandala,
+.quote-band .mini-mandala:before,
+.quote-band .mini-mandala:after{border-color:#E0BF78}
+
+/* Event cards: colour variation only within the maroon / blush / ivory family. */
+.events{background:linear-gradient(180deg,var(--hero-ivory),#FBF2E7);color:var(--hero-ink)}
+.mehendi-card{
+  background:linear-gradient(145deg,#E9D5D1,#D8B8B5);
+  border-color:rgba(123,45,53,.28);
+}
+.mehendi-card .event-icon,.mehendi-card .event-kicker{color:#7B2D35}
+.sangeet-card{
+  background:linear-gradient(145deg,#7B2D35,#641B24);
+  border-color:rgba(197,160,90,.55);
+  box-shadow:0 20px 60px rgba(100,27,36,.15);
+}
+.sangeet-card h3,.sangeet-card p,.sangeet-card .event-place{color:var(--hero-warm-white)!important}
+.sangeet-card .small-label,.sangeet-card .event-icon,.sangeet-card .event-kicker{color:#E7CB8A}
+.sangeet-card .dress-tag{color:#F7EBDD;border-color:rgba(231,203,138,.58)}
+.bidhi-card{
+  background:linear-gradient(145deg,#F3E4DF,#E7C9C7);
+  border-color:rgba(146,81,90,.26);
+}
+.bidhi-card .event-icon,.bidhi-card .event-kicker{color:#92515A}
+.haldi-card{
+  background:linear-gradient(145deg,#E4C9C5,#CF9EA1);
+  border-color:rgba(123,45,53,.30);
+}
+.haldi-card .event-icon,.haldi-card .event-kicker{color:#7B2D35}
+.haldi-card .dress-tag{border-color:rgba(123,45,53,.32);color:#6D3239}
+.wedding-feature{
+  background:linear-gradient(145deg,#641B24,#4A1820);
+  border-color:rgba(197,160,90,.68);
+  box-shadow:0 24px 70px rgba(74,24,32,.22);
+}
+
+/* Every dramatic full-width chapter stays maroon — never green or black. */
+.countdown-section{
+  background:
+    radial-gradient(circle at 50% 26%,rgba(178,122,126,.20),transparent 42%),
+    linear-gradient(145deg,#641B24,#4A1820);
+}
+.gallery{
+  background:
+    radial-gradient(circle at 50% 22%,rgba(216,184,181,.15),transparent 44%),
+    linear-gradient(145deg,#7B2D35,#5B1C25);
+}
+.rsvp{
+  background:
+    radial-gradient(circle at 50% 24%,rgba(216,184,181,.16),transparent 44%),
+    linear-gradient(145deg,#7B2D35,#4A1820);
+}
+.rsvp-panel{
+  background:rgba(74,24,32,.58);
+  border-color:rgba(197,160,90,.46);
+  box-shadow:0 30px 90px rgba(74,24,32,.22);
+}
+footer{background:linear-gradient(145deg,#5B1C25,#4A1820)}
+
+/* Small dark elements follow the same warm maroon palette. */
+.royal-btn{background:linear-gradient(135deg,#7B2D35,#641B24);border-color:var(--hero-champagne)}
+.royal-btn:hover{background:linear-gradient(135deg,#8B3D46,#70222C)}
+.golden-thread span{background:#641B24}
+
+/* Mobile keeps the same palette and avoids a visually heavy single-tone block. */
+@media(max-width:768px){
+  .heritage{
+    background:
+      radial-gradient(circle at 50% 8%,rgba(216,184,181,.14),transparent 32%),
+      linear-gradient(180deg,#7B2D35,#641B24 54%,#561B23);
+  }
+  .heritage-card:first-child{background:linear-gradient(145deg,rgba(178,122,126,.28),rgba(123,45,53,.58))}
+  .heritage-card:last-child{background:linear-gradient(145deg,rgba(216,184,181,.18),rgba(123,45,53,.58))}
+}
+
+/* ===== Corrected celebrations layout =====
+   Explicit two-class selectors intentionally outrank the legacy .event-card.feature rule. */
+.events{
+  background:linear-gradient(180deg,#F7EDDF 0%,#FBF4E9 52%,#F5E8D9 100%);
+}
+.events .section-heading{margin-bottom:58px}
+
+.day-divider{
+  max-width:1180px;
+  margin:0 auto 26px;
+  display:grid;
+  grid-template-columns:120px 1fr 260px;
+  gap:20px;
+  align-items:end;
+  padding:0 2px 16px;
+  border-bottom:1px solid rgba(155,116,54,.42);
+  color:#35251F;
+}
+.day-divider span,
+.day-divider em{
+  font-family:Montserrat,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.20em;
+  font-size:.62rem;
+  font-style:normal;
+  color:#8E5F4F;
+}
+.day-divider strong{
+  font:600 1.62rem/1.1 "Cormorant Garamond",serif;
+  text-align:center;
+  color:#4A1820;
+}
+.day-divider em{text-align:right;color:#9B7436}
+.day-divider.second{margin-top:64px}
+
+.events .event-grid{
+  gap:24px;
+  align-items:stretch;
+}
+.events .event-card{
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:48px 38px;
+  border-radius:0;
+  box-shadow:none;
+}
+.events .event-card:before{inset:9px}
+.events .event-card h3{font-size:2.65rem;margin:8px 0 12px}
+.events .event-card p{max-width:470px;margin-left:auto;margin-right:auto}
+.events .event-card .small-label{margin-top:18px}
+.events .event-card .event-place{margin-top:10px}
+.events .event-card .dress-tag{margin-top:18px}
+
+/* Soft rose-ivory Mehendi */
+.events .event-card.mehendi-card{
+  background:linear-gradient(145deg,#F1E2DE 0%,#E4C9C6 100%);
+  border-color:rgba(123,45,53,.28);
+  color:#4A1820;
+}
+.events .event-card.mehendi-card h3,
+.events .event-card.mehendi-card p,
+.events .event-card.mehendi-card .event-place{color:#4A2928!important}
+.events .event-card.mehendi-card .small-label,
+.events .event-card.mehendi-card .event-kicker,
+.events .event-card.mehendi-card .event-icon{color:#7B2D35!important}
+.events .event-card.mehendi-card .dress-tag{color:#7B2D35;border-color:rgba(123,45,53,.35)}
+
+/* Rich maroon Sangeet — explicit selector fixes old .feature override. */
+.events .event-card.sangeet-card,
+.events .event-card.feature.sangeet-card{
+  background:linear-gradient(145deg,#7B2D35 0%,#641B24 62%,#531922 100%)!important;
+  border-color:rgba(197,160,90,.62)!important;
+  box-shadow:0 24px 58px rgba(100,27,36,.18)!important;
+  color:#FFF9EE;
+}
+.events .event-card.sangeet-card:before{border-color:rgba(231,203,138,.25)}
+.events .event-card.sangeet-card h3,
+.events .event-card.sangeet-card p,
+.events .event-card.sangeet-card .event-place{color:#FFF9EE!important}
+.events .event-card.sangeet-card .small-label,
+.events .event-card.sangeet-card .event-kicker,
+.events .event-card.sangeet-card .event-icon{color:#E7CB8A!important}
+.events .event-card.sangeet-card .dress-tag{color:#FFF4DF!important;border-color:rgba(231,203,138,.62)!important}
+
+/* Very light Bidhi */
+.events .event-card.bidhi-card{
+  background:linear-gradient(145deg,#FAF1EA 0%,#EED8D5 100%);
+  border-color:rgba(146,81,90,.24);
+  color:#4A1820;
+}
+.events .event-card.bidhi-card h3,
+.events .event-card.bidhi-card p,
+.events .event-card.bidhi-card .event-place{color:#4A2928!important}
+.events .event-card.bidhi-card .small-label,
+.events .event-card.bidhi-card .event-kicker,
+.events .event-card.bidhi-card .event-icon{color:#92515A!important}
+.events .event-card.bidhi-card .dress-tag{color:#80505A;border-color:rgba(146,81,90,.32)}
+
+/* Pearl Haldi / Gaye Holud: maroon-led, champagne/turmeric accent only. */
+.events .event-card.haldi-card,
+.events .event-card.feature.haldi-card{
+  background:linear-gradient(145deg,#FFF9EE 0%,#F6ECDD 100%)!important;
+  border-color:rgba(197,160,90,.45)!important;
+  color:#4A1820;
+  box-shadow:none!important;
+}
+.events .event-card.haldi-card h3,
+.events .event-card.haldi-card p,
+.events .event-card.haldi-card .event-place{color:#4A2928!important}
+.events .event-card.haldi-card .small-label,
+.events .event-card.haldi-card .event-kicker{color:#7B2D35!important}
+.events .event-card.haldi-card .event-icon{color:#B38635!important}
+.events .event-card.haldi-card .dress-tag{color:#7B2D35!important;border-color:rgba(179,134,53,.45)!important}
+
+/* Wedding = visual climax, full row. */
+.events .event-card.wedding-feature{
+  grid-column:1 / -1;
+  min-height:430px;
+  margin-top:0;
+  background:
+    radial-gradient(circle at 50% 12%,rgba(178,122,126,.18),transparent 34%),
+    linear-gradient(145deg,#641B24 0%,#4A1820 100%)!important;
+  border-color:rgba(197,160,90,.72)!important;
+  box-shadow:0 28px 68px rgba(74,24,32,.20)!important;
+  color:#FFF9EE;
+}
+.events .event-card.wedding-feature:before{border-color:rgba(231,203,138,.28)}
+.events .event-card.wedding-feature h3{font-size:3.25rem;color:#FFF9EE!important}
+.events .event-card.wedding-feature p,
+.events .event-card.wedding-feature .event-place{color:#FFF4E4!important}
+.events .event-card.wedding-feature .small-label,
+.events .event-card.wedding-feature .event-kicker,
+.events .event-card.wedding-feature .event-icon{color:#E7CB8A!important}
+.events .event-card.wedding-feature .dress-tag{color:#FFF4DF!important;border-color:rgba(231,203,138,.64)!important}
+
+@media(max-width:900px){
+  .day-divider{grid-template-columns:1fr;text-align:center;gap:7px;padding-bottom:15px}
+  .day-divider strong,.day-divider em{text-align:center}
+  .events .event-card{min-height:0;padding:42px 28px}
+  .events .event-card.wedding-feature{grid-column:auto;min-height:0}
+}
+
+/* === Final events composition refinement === */
+.events{
+  position:relative;
+  z-index:901; /* petals pass behind this chapter so they never cross event copy */
+  background:linear-gradient(180deg,#FBF4E8 0%,#F7ECDD 52%,#FBF4E8 100%);
+}
+.events .event-grid{
+  gap:22px;
+  align-items:stretch;
+}
+.events .event-card{
+  min-height:330px;
+  padding:34px 34px;
+  justify-content:center;
+  border-width:1px;
+}
+.events .event-card:before{
+  inset:8px;
+  border-color:rgba(155,116,54,.16);
+}
+.events .event-card h3{
+  font-size:2.55rem;
+  margin:6px 0 9px;
+}
+.events .event-card p{
+  line-height:1.58;
+  margin-top:8px;
+  margin-bottom:8px;
+}
+.events .event-card .small-label{margin-top:12px;margin-bottom:4px}
+.events .event-card .event-place{margin-top:8px;margin-bottom:5px}
+.events .event-card .dress-tag{margin-top:13px}
+.events .event-kicker{margin-bottom:10px}
+.events .event-icon{font-size:1.95rem}
+
+/* Softer, hero-aligned light cards — warm ivory with only a whisper of wine. */
+.events .event-card.mehendi-card{
+  background:linear-gradient(145deg,#F8ECE6 0%,#EDD9D5 100%);
+  border-color:rgba(123,45,53,.22);
+}
+.events .event-card.bidhi-card{
+  background:linear-gradient(145deg,#FBF2EB 0%,#F1DFDC 100%);
+  border-color:rgba(146,81,90,.20);
+}
+.events .event-card.haldi-card,
+.events .event-card.feature.haldi-card{
+  background:linear-gradient(145deg,#FFF9EE 0%,#F8EEDF 100%)!important;
+  border-color:rgba(197,160,90,.34)!important;
+}
+.events .event-card.haldi-card .event-icon{color:#C5A05A!important}
+
+/* Sangeet: warm burgundy sampled from the hero textile, not saturated wine. */
+.events .event-card.sangeet-card,
+.events .event-card.feature.sangeet-card{
+  background:linear-gradient(145deg,#7A3239 0%,#6B252E 58%,#5E2028 100%)!important;
+  border-color:rgba(197,160,90,.56)!important;
+  box-shadow:0 18px 42px rgba(100,27,36,.14)!important;
+}
+
+/* Wedding becomes the full-width climax rather than a narrow centered card. */
+.events .event-card.wedding-feature{
+  grid-column:1 / -1;
+  width:100%;
+  max-width:none;
+  justify-self:stretch;
+  min-height:360px;
+  padding:44px 56px;
+  margin-top:2px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(178,122,126,.12),transparent 38%),
+    linear-gradient(145deg,#5F2028 0%,#561C24 58%,#4A1820 100%)!important;
+  box-shadow:0 20px 50px rgba(74,24,32,.16)!important;
+}
+.events .event-card.wedding-feature h3{font-size:3.35rem;margin:8px 0 11px}
+.events .event-card.wedding-feature p{max-width:610px}
+
+/* Editorial day separators: less dead space, cleaner alignment. */
+.day-divider{
+  margin-bottom:20px;
+  padding:0 2px 14px;
+  min-height:0;
+}
+.day-divider.second{margin-top:46px}
+.day-divider span,.day-divider em{font-size:.60rem;line-height:1.35}
+.day-divider em{max-width:330px;justify-self:end}
+.day-divider strong{font-size:1.58rem}
+
+@media(max-width:900px){
+  .events{z-index:901}
+  .events .event-card{min-height:0;padding:34px 24px}
+  .events .event-card.wedding-feature{grid-column:auto;width:100%;max-width:none;min-height:0;padding:40px 25px}
+  .events .event-card.wedding-feature h3{font-size:2.8rem}
+  .day-divider{margin-bottom:17px;padding-bottom:13px}
+  .day-divider.second{margin-top:38px}
+  .day-divider em{max-width:none;justify-self:center}
+}

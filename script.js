@@ -65,7 +65,7 @@ document.getElementById("rsvpForm").addEventListener("submit", e => {
   const help = document.getElementById("travelHelp").value;
   const note = document.getElementById("guestMessage").value.trim();
   const text = `Wedding RSVP%0A%0AName: ${encodeURIComponent(name)}%0AGuests: ${encodeURIComponent(count)}%0A4 December: ${encodeURIComponent(d1)}%0A5 December: ${encodeURIComponent(d2)}%0AFood: ${encodeURIComponent(food)}%0AStay/Travel Help: ${encodeURIComponent(help)}%0AMessage: ${encodeURIComponent(note || "-")}`;
-  // IMPORTANT: replace 919999999999 with your WhatsApp number including country code.
-  window.open(`https://wa.me/919999999999?text=${text}`, "_blank", "noopener");
+  // IMPORTANT: replace 918256995690 with your WhatsApp number including country code.
+  window.open(`https://wa.me/918256995690?text=${text}`, "_blank", "noopener");
   document.getElementById("formStatus").textContent = "Opening WhatsApp…";
 });
