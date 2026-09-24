@@ -45,3 +45,8 @@ form?.addEventListener("submit",e=>{
   window.open(`https://wa.me/918256995690?text=${encodeURIComponent(plain)}`,"_blank","noopener");
   document.getElementById("formStatus").textContent="Opening WhatsApp…";
 });
+
+// Golden Thread: a restrained line that draws as the invitation unfolds.
+const threadPath=document.getElementById('threadPath');
+function drawStoryThread(){if(!threadPath)return;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);const progress=Math.min(1,Math.max(0,scrollY/max));threadPath.style.strokeDashoffset=String(1400-(1400*progress));}
+addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resize',drawStoryThread,{passive:true});drawStoryThread();

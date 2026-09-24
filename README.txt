@@ -7,14 +7,14 @@ Palette: pearl ivory, oxblood/burgundy, champagne gold, deep emerald.
 Signature visual language: Golden Thread, Jharokha framing, subtle heritage geometry and ceremonial typography.
 
 PLACEHOLDERS
-All current couple/gallery images are deliberately marked placeholders. Replace image URLs in index.html with your final photos later; no redesign is required.
-The Our Story panel is intentionally written as a graceful coming-soon placeholder.
+Bride, groom, story and gallery sections now use real supplied photographs.
+The Our Story panel uses the supplied couple photograph and finished invitation copy.
 
 BEFORE SENDING TO GUESTS
 1. In script.js replace 918256995690 with the RSVP WhatsApp number including country code.
 2. Add assets/music.mp3 if background music is desired.
-3. Replace placeholder photo URLs in index.html.
-4. Add any finalized room/check-in and dress-code notes.
+3. Update photographs only if you want to change the final selection.
+4. Add any finalized room/check-in notes if needed.
 
 GITHUB PAGES
 Upload index.html, styles.css, script.js and assets/ to the publishing root. index.html must remain at that root.
@@ -33,6 +33,6 @@ Operational polish added (September 2026):
 - Five per-event .ics calendar downloads in /calendar
 - Countdown explicitly anchored to 2026-12-04 13:00 IST (+05:30)
 - RSVP includes adults/children, dietary notes, arrival/departure, pickup/drop, and optional Sangeet song request
-- Wedding Helpdesk, event sub-venue and dress-palette fields remain intentional placeholders until finalized
+- Wedding Helpdesk remains available for stay/travel coordination.
 - Gallery lightbox supports keyboard arrows and mobile swipe
 - Venue/address and Our Story copy duplication cleaned up
