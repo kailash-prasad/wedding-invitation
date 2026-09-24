@@ -4,11 +4,13 @@ PRODID:-//Adwitia and Kailash Wedding//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:sangeet-202612@kailashprasad.com
-DTSTAMP:20260914T114300Z
-DTSTART;TZID=Asia/Kolkata:20261204T190000
+UID:sangeet-20261204-05@kailashprasad.com
+DTSTAMP:20260924T160100Z
+DTSTART:20261204T133000Z
+DTEND:20261204T173000Z
 SUMMARY:Sangeet · Adwitia & Kailash
 LOCATION:Vedic Village Spa Resort\, Shikharpur P.O\, Bagu\, Newtown\, Kolkata\, West Bengal 700135
-DESCRIPTION:Sangeet begins at 7:00 PM. Sub-venue within Vedic Village to be announced.
+DESCRIPTION:Sangeet begins at 7:00 PM. Venue: Vedic Village Spa Resort, Kolkata.
+STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR

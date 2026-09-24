@@ -4,11 +4,13 @@ PRODID:-//Adwitia and Kailash Wedding//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:mehendi-202612@kailashprasad.com
-DTSTAMP:20260914T114300Z
-DTSTART;TZID=Asia/Kolkata:20261204T130000
+UID:mehendi-20261204-05@kailashprasad.com
+DTSTAMP:20260924T160100Z
+DTSTART:20261204T073000Z
+DTEND:20261204T103000Z
 SUMMARY:Mehendi · Adwitia & Kailash
 LOCATION:Vedic Village Spa Resort\, Shikharpur P.O\, Bagu\, Newtown\, Kolkata\, West Bengal 700135
-DESCRIPTION:Mehendi begins at 1:00 PM. Sub-venue within Vedic Village to be announced.
+DESCRIPTION:Mehendi begins at 1:00 PM. Venue: Vedic Village Spa Resort, Kolkata.
+STATUS:CONFIRMED
 END:VEVENT
 END:VCALENDAR
