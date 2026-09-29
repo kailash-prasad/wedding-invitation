@@ -16,9 +16,6 @@ function updateCountdown(){const el=document.getElementById("countdown");if(!el)
 updateCountdown();setInterval(updateCountdown,1000);
 
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal-on-scroll").forEach(el=>observer.observe(el));
-function makePetal(){if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
-setInterval(makePetal,1500);for(let i=0;i<4;i++)setTimeout(makePetal,i*450);
-
 // Gallery: tap/click, keyboard navigation and touch swipe.
 const dialog=document.getElementById("lightbox"), lightboxImage=document.getElementById("lightboxImage");
 const galleryImages=[...document.querySelectorAll(".gallery-item img")];
@@ -39,12 +36,29 @@ form?.addEventListener("submit",e=>{
   e.preventDefault();
   const v=id=>document.getElementById(id)?.value?.trim?.() ?? document.getElementById(id)?.value ?? "";
   const events=[...form.querySelectorAll('input[name="events"]:checked')].map(x=>x.value);
-  const attending=events.length?events.join("; "):"Not selected / not sure yet";
-  const help=v("travelHelp")==="Yes"?"Yes — I would like assistance with travel/stay arrangements.":"No";
-  const plain=`Wedding RSVP\n\nName: ${v("guestName")}\nGuests: ${v("guestCount")}\nCelebrations: ${attending}\nFood: ${v("foodPreference")}\nStay / travel help: ${help}\nMessage: ${v("guestMessage")||"-"}`;
+  const attending=v("attendance")==="No"?"Not attending":events.length?events.join("; "):"Not selected / not sure yet";
+  const help=v("attendance")!=="No" && v("travelHelp")==="Yes"?"Yes — I would like assistance with travel/stay arrangements.":"No";
+  const plain=`Wedding RSVP\n\nAttendance: ${v("attendance")}\nName: ${v("guestName")}\nGuests: ${v("attendance")==="No"?"0":v("guestCount")}\nCelebrations: ${attending}\nFood: ${v("attendance")==="No"?"Not applicable":v("foodPreference")}\nStay / travel help: ${help}\nMessage: ${v("guestMessage")||"-"}`;
   window.open(`https://wa.me/918256995690?text=${encodeURIComponent(plain)}`,"_blank","noopener");
   document.getElementById("formStatus").textContent="Opening WhatsApp…";
 });
+
+
+const attendance=document.getElementById('attendance');
+attendance.addEventListener('change',()=>{const absent=attendance.value==='No';document.querySelectorAll('#guestCount, input[name="events"], #foodPreference, #travelHelp').forEach(el=>{el.disabled=absent});});
+// Download one calendar file containing all five celebrations.
+const saveWeekend=document.createElement('button');saveWeekend.type='button';saveWeekend.className='royal-btn';saveWeekend.textContent='Save all events';document.querySelector('.events .section-heading').append(saveWeekend);
+saveWeekend.addEventListener('click',()=>{
+ const esc=v=>String(v).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+ const utc=v=>new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13))-19800000).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+ const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Adwitia Kailash//Wedding//EN','CALSCALE:GREGORIAN'];
+ document.querySelectorAll('.js-calendar').forEach((a,i)=>lines.push('BEGIN:VEVENT','UID:wedding-2026-'+i+'@kailashprasad.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''),'DTSTART:'+utc(a.dataset.start),'DTEND:'+utc(a.dataset.end),'SUMMARY:'+esc(a.dataset.title),'DESCRIPTION:'+esc(a.dataset.description),'LOCATION:Vedic Village Spa Resort\\, Kolkata','END:VEVENT'));
+ lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='adwitia-kailash-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
+});
+
+function makePetal(){if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
+setInterval(makePetal,1500);for(let i=0;i<4;i++)setTimeout(makePetal,i*450);
+
 
 // Golden Thread: a restrained line that draws as the invitation unfolds.
 const threadPath=document.getElementById('threadPath');
