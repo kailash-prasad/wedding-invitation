@@ -1,133 +1,147 @@
-/* Ultimate wow layer — refined closed invitation cover + programme polish. */
+/* Ultimate wow layer — ornate closed invitation + programme polish. */
 
 /* ===== Closed invitation opening ===== */
 .invitation-cover{
   position:absolute;inset:0;z-index:20;display:grid;place-items:center;
-  padding:28px 18px;
+  padding:22px 16px;
   background:
-    radial-gradient(circle at 50% 24%,rgba(154,35,55,.34),transparent 31%),
-    linear-gradient(145deg,#5e1020 0%,#2b040a 100%);
-  transition:opacity .58s ease,visibility .58s ease;
-  perspective:1400px;
+    radial-gradient(circle at 78% 12%,rgba(255,236,198,.08),transparent 18%),
+    radial-gradient(circle at 18% 86%,rgba(201,163,91,.08),transparent 22%),
+    linear-gradient(145deg,#6b1325 0%,#3a0710 56%,#210205 100%);
+  transition:opacity .55s ease,visibility .55s ease;
+  overflow:hidden;
 }
 .invitation-cover::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;
-  background-image:radial-gradient(circle at 24% 20%,rgba(218,181,104,.75) 1px,transparent 1.4px),radial-gradient(circle at 76% 80%,rgba(218,181,104,.55) 1px,transparent 1.4px);
-  background-size:54px 54px;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;
+  background:
+    radial-gradient(circle at 14% 16%,rgba(238,208,148,.9) 1px,transparent 1.4px) 0 0/42px 42px,
+    radial-gradient(circle at 86% 78%,rgba(238,208,148,.7) 1px,transparent 1.4px) 0 0/46px 46px;
 }
 .invitation-cover.is-opening{pointer-events:none}
 .invitation-cover.is-gone{opacity:0;visibility:hidden}
 
 .invitation-envelope{
   position:relative;
-  width:min(410px,90vw);
-  min-height:min(650px,78svh);
-  border:10px solid #efe2ca;
+  width:min(388px,88vw);
+  aspect-ratio:.73;
+  min-height:0;
+  border:8px solid #efe1c6;
   padding:0;
   cursor:pointer;
   color:#4a0b16;
-  background:linear-gradient(180deg,#faf2df 0%,#f0e4ce 100%);
-  box-shadow:0 34px 80px rgba(0,0,0,.42),0 0 0 1px rgba(218,181,104,.62);
+  background:linear-gradient(180deg,#fbf3df 0%,#f2e6cf 100%);
+  box-shadow:0 36px 86px rgba(0,0,0,.42),0 0 0 1px rgba(216,178,101,.56);
   overflow:hidden;
-  transform:translateZ(0);
 }
 .invitation-envelope::before{
-  content:"";position:absolute;inset:12px;z-index:1;pointer-events:none;
-  border:1px solid rgba(169,124,52,.55);
+  content:"";position:absolute;inset:14px;z-index:1;pointer-events:none;
+  border:1px solid rgba(164,120,51,.52);
   background:
-    linear-gradient(135deg,transparent 0 46%,rgba(190,145,73,.22) 47% 48%,transparent 49%) top left/64px 64px no-repeat,
-    linear-gradient(225deg,transparent 0 46%,rgba(190,145,73,.22) 47% 48%,transparent 49%) top right/64px 64px no-repeat,
-    linear-gradient(45deg,transparent 0 46%,rgba(190,145,73,.22) 47% 48%,transparent 49%) bottom left/64px 64px no-repeat,
-    linear-gradient(315deg,transparent 0 46%,rgba(190,145,73,.22) 47% 48%,transparent 49%) bottom right/64px 64px no-repeat;
+    linear-gradient(135deg,transparent 0 45%,rgba(187,143,72,.28) 46% 48%,transparent 49%) top left/60px 60px no-repeat,
+    linear-gradient(225deg,transparent 0 45%,rgba(187,143,72,.28) 46% 48%,transparent 49%) top right/60px 60px no-repeat,
+    linear-gradient(45deg,transparent 0 45%,rgba(187,143,72,.28) 46% 48%,transparent 49%) bottom left/60px 60px no-repeat,
+    linear-gradient(315deg,transparent 0 45%,rgba(187,143,72,.28) 46% 48%,transparent 49%) bottom right/60px 60px no-repeat;
 }
 .invitation-envelope::after{
-  content:"";position:absolute;left:50%;top:43px;width:72%;height:58%;z-index:2;
-  transform:translateX(-50%);
-  border:1px solid rgba(218,181,104,.62);
-  border-radius:150px 150px 18px 18px / 118px 118px 18px 18px;
-  background:linear-gradient(180deg,#7c2034 0%,#5c1222 58%,#480c18 100%);
-  box-shadow:inset 0 0 0 12px rgba(241,219,167,.035),0 14px 26px rgba(83,17,31,.12);
-  transition:transform .72s cubic-bezier(.22,.7,.18,1),opacity .5s ease;
+  content:"";position:absolute;inset:27px;z-index:1;pointer-events:none;
+  border:1px solid rgba(205,169,92,.16);
 }
 
 .invitation-card-face{
   position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;
-  justify-content:flex-start;background:transparent;border:0;
-  padding:92px 26px 50px;
-  transition:transform .72s cubic-bezier(.22,.7,.18,1),opacity .5s ease;
+  justify-content:flex-start;background:transparent;border:0;padding:48px 28px 54px;
+  transition:transform .72s cubic-bezier(.22,.7,.18,1),opacity .48s ease;
 }
-/* Closed cover intentionally contains no names/date/venue. */
-.cover-kicker,.cover-divider,.cover-date{display:none!important}
+.invitation-card-face::before,
+.invitation-card-face::after{
+  content:"❧";position:absolute;top:50%;z-index:1;color:#b88a41;font:400 3.3rem/1 "Cormorant Garamond",serif;opacity:.72;
+}
+.invitation-card-face::before{left:20px;transform:translateY(-50%) rotate(-24deg)}
+.invitation-card-face::after{right:20px;transform:translateY(-50%) scaleX(-1) rotate(-24deg)}
+
+/* Central jharokha — intentionally smaller and more ornate than the previous version. */
 .cover-monogram{
-  position:relative;z-index:4;display:flex;align-items:center;justify-content:center;gap:12px;
-  margin-top:84px;
-  font:600 clamp(4rem,16vw,6rem)/1 "Cormorant Garamond",serif;
-  color:#f8ead0;letter-spacing:.055em;text-shadow:0 2px 14px rgba(0,0,0,.15)
+  position:relative;z-index:4;
+  width:68%;height:54%;min-height:250px;
+  margin-top:20px;
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  font:600 clamp(3.45rem,14vw,5rem)/1 "Cormorant Garamond",serif;
+  color:#f6e6c2;letter-spacing:.055em;text-shadow:0 2px 14px rgba(0,0,0,.15);
+  background:linear-gradient(180deg,#7b1c31 0%,#5a1020 64%,#450b16 100%);
+  border:1px solid rgba(218,181,104,.62);
+  border-radius:50% 50% 11px 11px / 29% 29% 11px 11px;
+  box-shadow:inset 0 0 0 10px rgba(244,222,176,.035),0 14px 28px rgba(83,17,31,.14);
 }
 .cover-monogram::before{
-  content:"✦";position:absolute;top:-52px;left:50%;transform:translateX(-50%);
-  color:#ddb66b;font-size:.26em;text-shadow:none;
+  content:"";position:absolute;inset:12px;border:1px solid rgba(224,188,112,.28);
+  border-radius:50% 50% 8px 8px / 28% 28% 8px 8px;
 }
 .cover-monogram::after{
-  content:"❀";position:absolute;top:128px;left:50%;transform:translateX(-50%);
-  color:#ddb66b;font-size:.38em;text-shadow:none;
+  content:"✦";position:absolute;top:26px;left:50%;transform:translateX(-50%);
+  color:#dcb66a;font-size:.26em;text-shadow:none;
 }
 .cover-monogram i{font-style:normal;font-size:.34em;color:#ddb66b;transform:translateY(2px)}
-.cover-tap{
-  position:absolute;left:50%;bottom:42px;transform:translateX(-50%);
-  white-space:nowrap;
-  font:600 .68rem/1 "Montserrat",sans-serif;letter-spacing:.29em;text-transform:uppercase;color:#87612f
+.cover-monogram span:first-child,.cover-monogram span:last-child{position:relative;z-index:2}
+
+/* Delicate lower illustration in place of the oversized empty arch. */
+.invitation-card-face .cover-tap{
+  position:absolute;left:50%;bottom:34px;transform:translateX(-50%);white-space:nowrap;
+  font:600 .65rem/1 "Montserrat",sans-serif;letter-spacing:.27em;text-transform:uppercase;color:#87612f;
 }
-.cover-tap::before{
-  content:"";display:block;width:86px;height:1px;margin:0 auto 18px;
-  background:linear-gradient(90deg,transparent,#b9873e,transparent)
+.invitation-card-face .cover-tap::before{
+  content:"";display:block;width:102px;height:1px;margin:0 auto 16px;
+  background:linear-gradient(90deg,transparent,#b9873e,transparent);
 }
 .cover-seal{
-  position:absolute;left:50%;bottom:105px;top:auto;z-index:7;
-  width:68px;height:68px;border-radius:50%;display:grid;place-items:center;
+  position:absolute;left:50%;bottom:94px;top:auto;z-index:7;
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
   transform:translateX(-50%);
-  background:radial-gradient(circle at 38% 30%,#922238,#6a1426 64%,#4c0d19 100%);
+  background:radial-gradient(circle at 38% 30%,#922238,#681225 64%,#4a0d18 100%);
   border:2px solid #d6ae61;
-  box-shadow:0 8px 16px rgba(56,5,14,.26),0 0 0 4px rgba(245,234,211,.85),0 0 0 5px rgba(197,160,90,.58);
-  color:#f2d99e;font:600 .74rem "Cormorant Garamond",serif;letter-spacing:.04em;
-  transition:opacity .35s ease,transform .35s ease
+  box-shadow:0 8px 16px rgba(56,5,14,.24),0 0 0 4px rgba(245,234,211,.8),0 0 0 5px rgba(197,160,90,.55);
+  color:#f2d99e;font:600 .72rem "Cormorant Garamond",serif;letter-spacing:.04em;
+  transition:opacity .35s ease,transform .35s ease;
 }
 .cover-seal::before,.cover-seal::after{
-  content:"";position:absolute;top:50%;width:130px;height:44px;border-top:2px solid rgba(190,145,73,.68);
-  border-radius:100% 100% 0 0 / 100% 100% 0 0;z-index:-1
+  content:"";position:absolute;top:50%;width:116px;height:34px;border-top:2px solid rgba(190,145,73,.7);
+  border-radius:100% 100% 0 0 / 100% 100% 0 0;z-index:-1;
 }
-.cover-seal::before{right:50%;margin-right:20px;transform:translateY(-50%) rotate(-2deg)}
-.cover-seal::after{left:50%;margin-left:20px;transform:translateY(-50%) rotate(2deg)}
+.cover-seal::before{right:50%;margin-right:18px;transform:translateY(-50%) rotate(-3deg)}
+.cover-seal::after{left:50%;margin-left:18px;transform:translateY(-50%) rotate(3deg)}
+.cover-seal span{position:relative;z-index:2}
 
-.invitation-cover.is-opening .invitation-envelope::after{transform:translateX(-50%) scale(.98);opacity:.14}
-.invitation-cover.is-opening .invitation-card-face{transform:scale(1.025);opacity:.15}
-.invitation-cover.is-opening .cover-seal{opacity:0;transform:translateX(-50%) scale(.72)}
+/* Small ornamental lotus/line motif under the monogram. */
+.invitation-envelope .cover-seal::after{box-shadow:0 0 0 transparent}
+.invitation-card-face{--orn:#c4964b}
+.invitation-card-face .cover-monogram + .cover-tap{}
+.invitation-card-face > .cover-monogram{margin-bottom:auto}
+.invitation-card-face > .cover-monogram:has(i)::marker{display:none}
 
-/* Hide site controls until the closed invitation has been opened. */
-body.locked .mobile-quick-nav,body.locked .page-music-toggle{display:none!important}
+.invitation-cover.is-opening .invitation-card-face{transform:scale(1.02);opacity:.12}
+.invitation-cover.is-opening .cover-seal{opacity:0;transform:translateX(-50%) scale(.74)}
+
+/* Hide site controls until the invitation is actually opened. */
+body.locked .mobile-quick-nav,body.locked .page-music-toggle,
+body.cover-closed .mobile-quick-nav,body.cover-closed .page-music-toggle{display:none!important}
 
 @media(max-width:520px){
-  .invitation-cover{padding:22px 14px}
-  .invitation-envelope{width:min(390px,91vw);min-height:min(600px,76svh);border-width:8px}
-  .invitation-envelope::after{top:36px;width:74%;height:57%;border-radius:135px 135px 16px 16px / 105px 105px 16px 16px}
-  .invitation-card-face{padding-top:80px}
-  .cover-monogram{margin-top:76px;font-size:clamp(3.7rem,17vw,5.3rem)}
-  .cover-monogram::before{top:-46px}
-  .cover-monogram::after{top:112px}
-  .cover-seal{bottom:96px;width:64px;height:64px}
-  .cover-seal::before,.cover-seal::after{width:110px}
-  .cover-tap{bottom:36px;font-size:.63rem;letter-spacing:.25em}
+  .invitation-cover{padding:18px 12px}
+  .invitation-envelope{width:min(374px,90vw);border-width:7px}
+  .invitation-card-face{padding:40px 22px 50px}
+  .cover-monogram{width:67%;height:52%;min-height:238px;margin-top:18px;font-size:clamp(3.2rem,15.5vw,4.55rem)}
+  .cover-monogram::after{top:22px}
+  .cover-seal{bottom:88px;width:61px;height:61px}
+  .cover-seal::before,.cover-seal::after{width:102px}
+  .invitation-card-face .cover-tap{bottom:30px;font-size:.61rem;letter-spacing:.23em}
+  .invitation-card-face::before,.invitation-card-face::after{font-size:2.7rem;opacity:.56}
 }
 @media(max-width:380px){
-  .invitation-envelope{min-height:min(560px,74svh)}
-  .invitation-envelope::after{top:32px;height:55%}
-  .cover-monogram{margin-top:68px}
-  .cover-seal{bottom:88px}
-  .cover-tap{bottom:30px}
+  .invitation-envelope{width:min(360px,91vw)}
+  .cover-monogram{min-height:222px}
+  .cover-seal{bottom:82px}
+  .invitation-card-face .cover-tap{bottom:27px}
 }
-@media(prefers-reduced-motion:reduce){
-  .invitation-envelope::after,.invitation-card-face,.cover-seal,.invitation-cover{transition:none!important}
-}
+@media(prefers-reduced-motion:reduce){.invitation-card-face,.cover-seal,.invitation-cover{transition:none!important}}
 
 /* ===== Main gate choreography after cover opens ===== */
 .gate.cover-revealed .gate-content>*{animation:gateReveal .72s both;animation-delay:.08s}
