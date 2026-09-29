@@ -1,4 +1,4 @@
-const wowStyles=document.createElement("link");wowStyles.rel="stylesheet";wowStyles.href="wow.css?v=20260930c";document.head.appendChild(wowStyles);
+const wowStyles=document.createElement("link");wowStyles.rel="stylesheet";wowStyles.href="wow.css?v=20260930d";document.head.appendChild(wowStyles);
 
 const gate = document.getElementById("invitationGate");
 const openBtn = document.getElementById("openInvitation");
@@ -68,13 +68,15 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
 // --- Ultimate wow pass: closed invitation, mantra choreography, illustrated programme ---
 (function initInvitationCover(){
   if(!gate || gate.querySelector('.invitation-cover')) return;
+  document.body.classList.add('cover-closed');
   const cover=document.createElement('div');
   cover.className='invitation-cover';
-  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-monogram"><span>A</span><i>✦</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal">A✦K</span></button>`;
+  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-monogram"><span>A</span><i>✦</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>A✦K</span></span></button>`;
   gate.prepend(cover);
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
     if(cover.classList.contains('is-opening')) return;
+    document.body.classList.remove('cover-closed');
     cover.classList.add('is-opening');
     setTimeout(()=>gate.classList.add('cover-revealed'),500);
     setTimeout(()=>cover.classList.add('is-gone'),980);
