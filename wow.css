@@ -1,56 +1,98 @@
 /* Ultimate wow layer — intentionally isolated from the core stylesheet. */
 
-/* --- Closed invitation opening --- */
+/* --- Refined closed invitation opening --- */
 .invitation-cover{
   position:absolute; inset:0; z-index:20; display:grid; place-items:center;
   background:
-    radial-gradient(circle at 50% 34%,rgba(201,163,91,.14),transparent 28%),
-    linear-gradient(145deg,#3b0710,#170205 72%);
+    radial-gradient(circle at 50% 20%,rgba(148,38,58,.25),transparent 31%),
+    linear-gradient(145deg,#5e1020,#230307 72%);
   transition:opacity .55s ease,visibility .55s ease;
   perspective:1400px;
+  overflow:hidden;
+}
+.invitation-cover::before{
+  content:"";position:absolute;inset:0;opacity:.06;pointer-events:none;
+  background-image:
+    radial-gradient(circle at 25% 25%,rgba(226,190,111,.8) 1px,transparent 1.5px),
+    radial-gradient(circle at 75% 75%,rgba(226,190,111,.6) 1px,transparent 1.5px);
+  background-size:52px 52px;
 }
 .invitation-cover.is-opening{pointer-events:none}
 .invitation-cover.is-gone{opacity:0;visibility:hidden}
 .invitation-envelope{
-  position:relative; width:min(390px,84vw); aspect-ratio:.78; border:0; padding:0;
-  cursor:pointer; background:#f8efdc; color:#4a0b16;
-  box-shadow:0 38px 85px rgba(0,0,0,.46),0 0 0 1px rgba(234,211,154,.72);
-  transform-style:preserve-3d; overflow:visible;
+  position:relative;width:min(420px,88vw);min-height:min(620px,76vh);border:10px solid #f2e6cf;padding:28px 24px 34px;
+  cursor:pointer;background:linear-gradient(180deg,#f7efdf 0%,#efe3cd 100%);color:#4a0b16;
+  box-shadow:0 34px 78px rgba(0,0,0,.36),0 0 0 1px rgba(234,211,154,.72);
+  overflow:visible;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
 }
 .invitation-envelope::before{
-  content:""; position:absolute; inset:13px; border:1px solid rgba(154,111,42,.55); pointer-events:none;
+  content:"";position:absolute;inset:14px;border:1px solid rgba(168,123,52,.5);pointer-events:none;
   background:
-    linear-gradient(135deg,transparent 0 46%,rgba(201,163,91,.2) 47% 48%,transparent 49%) top left/66px 66px no-repeat,
-    linear-gradient(225deg,transparent 0 46%,rgba(201,163,91,.2) 47% 48%,transparent 49%) top right/66px 66px no-repeat,
-    linear-gradient(45deg,transparent 0 46%,rgba(201,163,91,.2) 47% 48%,transparent 49%) bottom left/66px 66px no-repeat,
-    linear-gradient(315deg,transparent 0 46%,rgba(201,163,91,.2) 47% 48%,transparent 49%) bottom right/66px 66px no-repeat;
+    linear-gradient(135deg,transparent 0 45%,rgba(190,145,72,.45) 46% 48%,transparent 49%) top left/70px 70px no-repeat,
+    linear-gradient(225deg,transparent 0 45%,rgba(190,145,72,.45) 46% 48%,transparent 49%) top right/70px 70px no-repeat,
+    linear-gradient(45deg,transparent 0 45%,rgba(190,145,72,.45) 46% 48%,transparent 49%) bottom left/70px 70px no-repeat,
+    linear-gradient(315deg,transparent 0 45%,rgba(190,145,72,.45) 46% 48%,transparent 49%) bottom right/70px 70px no-repeat;
 }
 .invitation-envelope::after{
-  content:""; position:absolute; left:0; right:0; top:0; height:51%; z-index:3;
-  background:linear-gradient(160deg,#fff8e8,#ecddbd);
-  clip-path:polygon(0 0,100% 0,50% 100%);
-  transform-origin:50% 0%; transition:transform .9s cubic-bezier(.64,0,.22,1),filter .7s ease;
-  filter:drop-shadow(0 8px 8px rgba(91,49,20,.12));
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%);
+  background:linear-gradient(180deg,transparent,rgba(197,160,90,.18) 18%,rgba(197,160,90,.18) 82%,transparent);opacity:.6;pointer-events:none;
 }
-.invitation-cover.is-opening .invitation-envelope::after{transform:rotateX(178deg);filter:none}
 .invitation-card-face{
-  position:absolute; inset:9% 8%; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  border:1px solid rgba(172,128,56,.5); background:linear-gradient(#fffaf0,#f3e8d0); z-index:2;
+  position:relative;z-index:2;width:min(78%,286px);min-height:382px;margin-top:30px;padding:32px 24px 28px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  border:1px solid rgba(226,190,111,.55);background:linear-gradient(180deg,#7a1d31 0%,#5a1121 62%,#470b17 100%);
+  border-radius:134px 134px 20px 20px / 108px 108px 20px 20px;
+  box-shadow:inset 0 0 0 1px rgba(255,248,235,.1),0 12px 28px rgba(74,11,22,.12);
   transition:transform .85s cubic-bezier(.22,.7,.18,1) .12s,box-shadow .5s ease;
 }
-.invitation-cover.is-opening .invitation-card-face{transform:translateY(-12%) scale(1.025);box-shadow:0 18px 40px rgba(74,11,22,.17)}
-.cover-kicker{font:500 .67rem/1 "Montserrat",sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#98722f;margin-bottom:22px}
-.cover-monogram{display:flex;align-items:center;gap:12px;font:600 clamp(3.7rem,12vw,5.7rem)/1 "Cormorant Garamond",serif;color:#641b24}
-.cover-monogram i{font-style:normal;font-size:.36em;color:#c29a4d;transform:translateY(2px)}
-.cover-divider{width:115px;height:1px;margin:24px 0;background:linear-gradient(90deg,transparent,#b88839,transparent)}
-.cover-date{margin:0;font:500 .88rem/1.5 "Cormorant Garamond",serif;letter-spacing:.12em;text-transform:uppercase;color:#5d382e}
-.cover-tap{position:absolute;bottom:8%;font:600 .61rem/1 "Montserrat",sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#8c6934}
-.cover-seal{position:absolute;left:50%;top:49%;z-index:5;width:55px;height:55px;border-radius:50%;display:grid;place-items:center;transform:translate(-50%,-50%);background:linear-gradient(145deg,#8f1729,#4a0712);border:2px solid #d4af61;box-shadow:0 8px 16px rgba(56,5,14,.28);color:#f1d99e;font:600 1rem "Cormorant Garamond",serif;transition:opacity .35s ease,transform .35s ease}
-.invitation-cover.is-opening .cover-seal{opacity:0;transform:translate(-50%,-50%) scale(.75)}
-@media(max-width:520px){.invitation-envelope{width:min(335px,84vw)}.cover-tap{bottom:7%}}
-@media(prefers-reduced-motion:reduce){.invitation-envelope::after,.invitation-card-face,.cover-seal{transition:none!important}.invitation-cover.is-opening .invitation-envelope::after{transform:none}.invitation-cover.is-opening .invitation-card-face{transform:none}}
+.invitation-card-face::before{
+  content:"";position:absolute;inset:15px;border:1px solid rgba(226,190,111,.27);pointer-events:none;
+  border-radius:116px 116px 13px 13px / 92px 92px 13px 13px;
+}
+.invitation-card-face::after{
+  content:"✦";position:absolute;top:28px;left:50%;transform:translateX(-50%);color:#d8b264;font-size:1.05rem;
+}
+.invitation-cover.is-opening .invitation-card-face{transform:translateY(-2%) scale(1.025);box-shadow:0 18px 40px rgba(74,11,22,.17)}
+.cover-kicker,.cover-date,.cover-divider{display:none}
+.cover-monogram{position:relative;z-index:2;display:flex;align-items:center;gap:12px;margin-top:62px;font:600 clamp(3.5rem,13vw,5.2rem)/1 "Cormorant Garamond",serif;color:#f4e7c8;letter-spacing:.04em;text-shadow:0 2px 12px rgba(0,0,0,.12)}
+.cover-monogram i{font-style:normal;font-size:.34em;color:#ddb96f;transform:translateY(2px)}
+.cover-monogram::after{
+  content:"❀";position:absolute;left:50%;top:116px;transform:translateX(-50%);font-size:1.75rem;color:#ddb96f;
+}
+.invitation-card-face .cover-tap{
+  position:absolute;left:50%;bottom:-188px;transform:translateX(-50%);white-space:nowrap;
+  font:600 .64rem/1 "Montserrat",sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#8c6934;
+}
+.invitation-card-face .cover-tap::before{
+  content:"";position:absolute;left:50%;top:-55px;width:170px;height:44px;transform:translateX(-50%);
+  border-top:2px solid rgba(195,159,84,.68);border-radius:100% 100% 0 0 / 100% 100% 0 0;
+}
+.cover-seal{
+  position:absolute;left:50%;bottom:108px;z-index:5;width:70px;height:70px;border-radius:50%;display:grid;place-items:center;
+  transform:translateX(-50%);background:radial-gradient(circle at 40% 35%,#8a1e31,#621121 68%,#47101a 100%);
+  border:2px solid #d4af61;box-shadow:0 8px 18px rgba(56,5,14,.28),0 0 0 4px rgba(243,232,212,.8),0 0 0 5px rgba(195,159,84,.55);
+  color:#f1d99e;font:600 .78rem "Cormorant Garamond",serif;transition:opacity .35s ease,transform .35s ease;
+}
+.cover-seal::before,.cover-seal::after{
+  content:"";position:absolute;top:50%;width:140px;height:44px;border-top:2px solid rgba(195,159,84,.74);border-radius:100% 100% 0 0 / 100% 100% 0 0;transform:translateY(-50%);z-index:-1;
+}
+.cover-seal::before{right:50%;margin-right:19px}.cover-seal::after{left:50%;margin-left:19px}
+.invitation-cover.is-opening .cover-seal{opacity:0;transform:translateX(-50%) scale(.78)}
+.invitation-envelope:hover .cover-seal{transform:translateX(-50%) scale(1.03)}
+.invitation-envelope:focus-visible{outline:2px solid #e5c476;outline-offset:8px}
+@media(max-width:520px){
+  .invitation-envelope{width:min(410px,92vw);min-height:580px;padding:24px 18px 30px}
+  .invitation-card-face{width:min(80%,276px);min-height:340px;margin-top:25px}
+  .cover-monogram{margin-top:54px;font-size:clamp(3.2rem,15vw,4.6rem)}
+  .cover-monogram::after{top:105px}
+  .cover-seal{bottom:101px;width:66px;height:66px}
+  .cover-seal::before,.cover-seal::after{width:118px;height:38px}
+  .invitation-card-face .cover-tap{bottom:-171px;font-size:.61rem;letter-spacing:.24em}
+}
+@media(max-width:380px){.invitation-envelope{min-height:548px}.invitation-card-face{min-height:318px}.cover-seal{bottom:94px}.invitation-card-face .cover-tap{bottom:-158px}}
+@media(prefers-reduced-motion:reduce){.invitation-card-face,.cover-seal{transition:none!important}.invitation-cover.is-opening .invitation-card-face{transform:none}}
 
-/* --- Main gate choreography after envelope opens --- */
+/* --- Main gate choreography after cover opens --- */
 .gate.cover-revealed .gate-content>*{animation:gateReveal .72s both;animation-delay:.08s}
 .gate.cover-revealed .gate-content>*:nth-child(2){animation-delay:.16s}
 .gate.cover-revealed .gate-content>*:nth-child(3){animation-delay:.24s}
