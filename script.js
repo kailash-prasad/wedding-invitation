@@ -1,4 +1,4 @@
-const wowStyles=document.createElement("link");wowStyles.rel="stylesheet";wowStyles.href="wow.css";document.head.appendChild(wowStyles);
+const wowStyles=document.createElement("link");wowStyles.rel="stylesheet";wowStyles.href="wow.css?v=20260930c";document.head.appendChild(wowStyles);
 
 const gate = document.getElementById("invitationGate");
 const openBtn = document.getElementById("openInvitation");
@@ -45,7 +45,6 @@ form?.addEventListener("submit",e=>{
   document.getElementById("formStatus").textContent="Opening WhatsApp…";
 });
 
-
 const attendance=document.getElementById('attendance');
 attendance?.addEventListener('change',()=>{const absent=attendance.value==='No';document.querySelectorAll('#guestCount, input[name="events"], #foodPreference, #travelHelp').forEach(el=>{el.disabled=absent});});
 // Download one calendar file containing all five celebrations.
@@ -61,7 +60,6 @@ saveWeekend.addEventListener('click',()=>{
 function makePetal(){if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
 setInterval(makePetal,1500);for(let i=0;i<4;i++)setTimeout(makePetal,i*450);
 
-
 // Golden Thread: a restrained line that draws as the invitation unfolds.
 const threadPath=document.getElementById('threadPath');
 function drawStoryThread(){if(!threadPath)return;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);const progress=Math.min(1,Math.max(0,scrollY/max));threadPath.style.strokeDashoffset=String(1400-(1400*progress));}
@@ -72,7 +70,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   if(!gate || gate.querySelector('.invitation-cover')) return;
   const cover=document.createElement('div');
   cover.className='invitation-cover';
-  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-kicker">Wedding Invitation</span><span class="cover-monogram"><span>A</span><i>✦</i><span>K</span></span><span class="cover-divider"></span><p class="cover-date">04—05 December 2026<br>Vedic Village · Kolkata</p><span class="cover-tap">Tap to open</span></span><span class="cover-seal">A✦K</span></button>`;
+  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-monogram"><span>A</span><i>✦</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal">A✦K</span></button>`;
   gate.prepend(cover);
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
