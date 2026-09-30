@@ -138,3 +138,7 @@ footer .footer-small{font-size:10px;letter-spacing:.08em;line-height:1.8;max-wid
 }
 .rsvp,footer{position:relative;z-index:901}
 @media(max-width:700px){.mobile-quick-nav{left:50%;right:auto;transform:translateX(-50%);width:calc(100% - 32px);max-width:390px}}
+
+/* Preserve the complete new portraits, including their original framing. */
+.couple-section .portrait{aspect-ratio:auto}
+.couple-section .portrait img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain}
