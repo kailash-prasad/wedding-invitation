@@ -9,7 +9,19 @@ let soundOn = false;
 // Keep the wedding soundtrack intentionally soft beneath the invitation.
 music.volume = 0.18;
 function syncMusicButtons(){const label=soundOn?"♫ Music On":"♪ Play Music";[soundToggle,pageMusicToggle].filter(Boolean).forEach(btn=>{btn.textContent=label;btn.setAttribute("aria-label",soundOn?"Pause background music":"Play background music")})}
-openBtn?.addEventListener("click",()=>{gate.classList.add("opened");document.body.classList.remove("locked");setTimeout(()=>{gate.style.display="none"},1150)});
+function openMainInvitation(){
+  if(!gate || gate.classList.contains("opened")) return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.body.classList.remove('locked','cover-closed');
+  gate.classList.add('opened');
+  setTimeout(()=>{
+    gate.style.display='none';
+    gate.setAttribute('aria-hidden','true');
+    if(!location.hash || location.hash==='#home') document.getElementById('welcome-title')?.focus({preventScroll:true});
+  },reduce?0:750);
+}
+openBtn?.addEventListener('click',openMainInvitation);
+document.querySelector('.skip-link')?.addEventListener('click',openMainInvitation);
 async function toggleMusic(e){e?.stopPropagation();if(music.paused){try{await music.play();soundOn=true}catch(_){soundOn=false}}else{music.pause();soundOn=false}syncMusicButtons()}
 soundToggle?.addEventListener("click",toggleMusic);pageMusicToggle?.addEventListener("click",toggleMusic);syncMusicButtons();
 
@@ -76,24 +88,16 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
     if(cover.classList.contains('is-opening')) return;
-    document.body.classList.remove('cover-closed');
     cover.classList.add('is-opening');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(()=>gate.classList.add('cover-revealed'),reduce?0:450);
-    setTimeout(()=>cover.classList.add('is-gone'),reduce?0:800);
-    setTimeout(()=>{cover.remove();openBtn?.focus({preventScroll:true});},reduce?0:1300);
+    setTimeout(openMainInvitation,reduce?0:450);
+    setTimeout(()=>cover.remove(),reduce?0:1250);
   };
   envelope.addEventListener('click',reveal,{once:true});
 
 })();
 
-(function initMantraReveal(){
-  const blessing=document.querySelector('.blessing');
-  if(!blessing) return;
-  if(!('IntersectionObserver' in window)){blessing.classList.add('mantra-visible');return;}
-  const mantraObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('mantra-visible');mantraObserver.unobserve(entry.target)}}),{threshold:.28});
-  mantraObserver.observe(blessing);
-})();
+
 
 const programmeIcons={
   mehendi:`<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M55 79c-4-9-3-17-1-28l3-21c1-6-7-8-9-2l-4 20 1-29c1-6-8-7-9-1l-1 29-3-25c-1-6-10-4-9 2l3 26-5-17c-2-6-10-3-8 3l7 25c3 12 11 20 23 22 5 1 9-1 12-4Z"/><path d="M32 57c-6-2-11-1-15 3M58 54c7-4 12-3 17 1M31 37c5 3 9 7 12 12M23 65c8 2 14 7 18 14"/><circle cx="37" cy="60" r="5"/><path d="M37 55c0-7 8-11 13-7M37 65c6 1 10 5 11 10"/></svg>`,
