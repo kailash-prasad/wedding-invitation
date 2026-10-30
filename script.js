@@ -8,7 +8,23 @@ const pageMusicToggle = document.getElementById("pageMusicToggle");
 let soundOn = false;
 // Keep the wedding soundtrack intentionally soft beneath the invitation.
 music.volume = 0.18;
-function syncMusicButtons(){const label=soundOn?"♫ Music On":"♪ Play Music";[soundToggle,pageMusicToggle].filter(Boolean).forEach(btn=>{btn.textContent=label;btn.setAttribute("aria-label",soundOn?"Pause background music":"Play background music")})}
+function syncMusicButtons(){
+  soundOn=!music.paused && !music.ended;
+  const label=soundOn?"♫ Music On":"♪ Play Music";
+  [soundToggle,pageMusicToggle].filter(Boolean).forEach(btn=>{
+    btn.textContent=label;
+    btn.setAttribute("aria-label",soundOn?"Pause background music":"Play background music");
+    btn.setAttribute("aria-pressed",String(soundOn));
+    btn.title=soundOn?"Pause music":"Play music";
+  });
+}
+function startMusic(){
+  // Call within the opening click, before any animation timer: mobile browsers
+  // require an active user gesture for audible playback.
+  if(!music.paused)return;
+  const attempt=music.play();
+  attempt?.then(syncMusicButtons).catch(()=>syncMusicButtons());
+}
 function openMainInvitation(){
   if(!gate || gate.classList.contains("opened")) return;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,9 +36,11 @@ function openMainInvitation(){
     if(!location.hash || location.hash==='#home') document.getElementById('welcome-title')?.focus({preventScroll:true});
   },reduce?0:750);
 }
-openBtn?.addEventListener('click',openMainInvitation);
-document.querySelector('.skip-link')?.addEventListener('click',openMainInvitation);
-async function toggleMusic(e){e?.stopPropagation();if(music.paused){try{await music.play();soundOn=true}catch(_){soundOn=false}}else{music.pause();soundOn=false}syncMusicButtons()}
+function openWithMusic(){startMusic();openMainInvitation()}
+openBtn?.addEventListener('click',openWithMusic);
+document.querySelector('.skip-link')?.addEventListener('click',openWithMusic);
+function toggleMusic(e){e?.stopPropagation();if(music.paused)startMusic();else music.pause()}
+['playing','pause','ended','error'].forEach(event=>music.addEventListener(event,syncMusicButtons));
 soundToggle?.addEventListener("click",toggleMusic);pageMusicToggle?.addEventListener("click",toggleMusic);syncMusicButtons();
 
 // Countdown is anchored to the same absolute Kolkata instant for every guest worldwide.
@@ -69,7 +87,7 @@ saveWeekend.addEventListener('click',()=>{
  lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='adwitia-kailash-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
 });
 
-function makePetal(){if(document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
+function makePetal(){if(document.body.classList.contains("locked")||document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
 setInterval(makePetal,1500);for(let i=0;i<4;i++)setTimeout(makePetal,i*450);
 
 // Golden Thread: a restrained line that draws as the invitation unfolds.
@@ -88,6 +106,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
     if(cover.classList.contains('is-opening')) return;
+    startMusic();
     cover.classList.add('is-opening');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     setTimeout(openMainInvitation,reduce?0:450);
@@ -115,3 +134,4 @@ document.querySelectorAll('.event-card').forEach(card=>{
   else if(title.includes('haldi')||title.includes('holud')) icon=programmeIcons.haldi;
   const slot=card.querySelector('.event-icon'); if(slot) slot.innerHTML=icon;
 });
+
