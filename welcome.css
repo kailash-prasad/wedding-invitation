@@ -83,3 +83,7 @@ html{scroll-padding-top:20px;scroll-padding-bottom:95px}
  .welcome-actions{grid-column:2;grid-row:4;gap:9px;max-width:none;width:100%}
  .welcome-button{font-size:9px;min-height:44px;padding:10px 9px}
 }
+
+/* Two complete shloka lines, including on small phones. */
+.royal-blessing .welcome-shloka{font-size:clamp(14px,4.1vw,28px);line-height:2;margin-inline:auto}
+.royal-blessing .welcome-shloka .shloka-line{display:block;white-space:nowrap}
