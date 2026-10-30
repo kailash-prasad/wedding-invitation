@@ -24,3 +24,10 @@ Asset: assets/destiny-studying-v3.webp
 Generated with the built-in image generation tool, using the previous paired artwork as the edit target and the user-provided original photographs as identity references.
 Final edit prompt:
 undefined
+
+
+Semi-formal college attire update
+Asset: assets/destiny-college-v4.webp
+Generated using the built-in image generation tool as an edit of the studying illustration. Faces and poses preserved; clothing changed to a light blue button-down shirt and ivory blouse with muted maroon blazer, with simple accessories.
+Final edit prompt:
+undefined
