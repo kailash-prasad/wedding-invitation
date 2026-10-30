@@ -30,7 +30,7 @@
 .destiny-pair{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);align-items:center;gap:26px;max-width:980px;margin:0 auto}
 .destiny-person{margin:0;border:1px solid #cfaa6a;border-radius:28px 28px 6px 6px;background:#fbedd6;overflow:hidden;box-shadow:0 15px 30px #26050d33;color:#5c202b;position:relative}
 .destiny-person:after{content:"";position:absolute;inset:7px;border:1px solid #bd95564a;border-radius:21px 21px 2px 2px;pointer-events:none}
-.destiny-illustration{aspect-ratio:1;background-image:url('assets/destiny-illustrations-v1.webp');background-size:200% 100%;background-repeat:no-repeat;background-color:#f8ecd7}
+.destiny-illustration{aspect-ratio:1;background-image:url('assets/destiny-caricatures-v2.webp');background-size:200% 100%;background-repeat:no-repeat;background-color:#f8ecd7}
 .illustration-kailash{background-position:left center}
 .illustration-adwitia{background-position:right center}
 .destiny-caption{position:relative;padding:17px 12px 23px;border-top:1px solid #c7a36855;background:#fff2dd}
@@ -137,4 +137,42 @@
  .destiny-us svg{width:26px;height:21px}
  .destiny-us span{font-size:24px}
  .destiny-signoff{margin-top:24px}
+}
+/* Real campus postcards, followed by photo-based caricatures. */
+.campus-journey{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:26px;align-items:center;max-width:980px;margin:0 auto 45px}
+.campus-postcard{margin:0;padding:17px 14px 18px;background:#fff1d9;border:1px solid #d4b27b;color:#5b202b;box-shadow:0 14px 30px #25070d35;position:relative;border-radius:3px}
+.campus-postcard:after{content:"";position:absolute;inset:5px;border:1px solid #b58d4f44;pointer-events:none}
+.campus-nit{transform:rotate(-2deg)}
+.campus-iit{transform:rotate(2deg)}
+.campus-postcard .postcard-kicker{font:400 25px/1.2 "Great Vibes",cursive;margin:0 0 13px;color:#8c3940}
+.campus-postcard img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;object-position:center;border:1px solid #bd995d55}
+.campus-postcard h3{font:600 clamp(21px,2vw,27px)/1.15 "Cormorant Garamond",Georgia,serif;margin:14px 0 8px;color:#5b202b}
+.campus-postcard figcaption p{font:400 18px/1.4 "Cormorant Garamond",Georgia,serif;color:#795841;margin:0}
+.campus-connection{color:#ddbe83;text-align:center}
+.campus-connection svg{width:100%;height:auto;display:block;overflow:visible;margin-bottom:10px;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.2}
+.journey-trail{stroke-dasharray:3 5}
+.campus-connection span{font:italic 400 18px/1.4 "Cormorant Garamond",Georgia,serif;display:block}
+.destiny-caption>p:first-of-type{font-size:22px}
+.destiny-caption .person-detail{font:400 18px/1.45 "Cormorant Garamond",Georgia,serif;color:#755844;margin:10px auto 0;max-width:290px;letter-spacing:0}
+.destiny-signoff em{white-space:normal}
+.campus-credits{max-width:620px;margin:25px auto 0;font:400 11px/1.7 "Montserrat",sans-serif;color:#e2cda9;position:relative;z-index:1}
+.campus-credits summary{cursor:pointer;list-style-position:inside;opacity:.8;padding:7px;min-height:32px}
+.campus-credits p{margin:8px 0 0;font-size:11px;line-height:1.8}
+.campus-credits a{text-underline-offset:3px}
+@media(max-width:900px){.campus-journey{grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr);gap:20px}.campus-postcard{padding:16px 12px}.campus-postcard .postcard-kicker{font-size:22px}.campus-connection span{font-size:16px}}
+@media(max-width:600px){
+ .campus-journey{grid-template-columns:1fr;gap:18px;max-width:330px;margin-bottom:34px}
+ .campus-postcard{padding:16px 15px 19px}
+ .campus-postcard .postcard-kicker{font-size:25px}
+ .campus-postcard h3{font-size:25px}
+ .campus-postcard figcaption p{font-size:19px}
+ .campus-nit{transform:rotate(-1.5deg)}
+ .campus-iit{transform:rotate(1.5deg)}
+ .campus-connection{padding:0;position:relative;max-width:250px;margin:auto;display:flex;align-items:center;gap:7px}
+ .campus-connection svg{width:80px;flex:0 0 80px;margin:0;transform:rotate(16deg)}
+ .campus-connection span{font-size:18px;line-height:1.3}
+ .destiny-caption>p:first-of-type{font-size:18px;line-height:1.25;min-height:45px;padding:0 3px}
+ .destiny-caption .person-detail{font-size:16px;line-height:1.35;padding:0 6px;margin-top:7px}
+ .destiny-signoff{max-width:310px;font-size:24px}
+ .campus-credits{font-size:10px;margin-top:20px}
 }

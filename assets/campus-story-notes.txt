@@ -1,0 +1,19 @@
+Campus and portrait story update
+
+Campus photographs
+NIT Arunachal Pradesh, former Yupia campus, photographed in 2015.
+Author: Shakkeerpadathakayil. License: CC0 1.0.
+Source: https://commons.wikimedia.org/wiki/File:NIT_Arunachal_Pradesh.jpg
+Original image: https://upload.wikimedia.org/wikipedia/commons/e/e6/NIT_Arunachal_Pradesh.jpg
+
+IIT Gandhinagar campus, photographed in 2022.
+Author: Jmanjaly. License: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
+Source: https://commons.wikimedia.org/wiki/File:IITGN.jpg
+Original image: https://upload.wikimedia.org/wikipedia/commons/e/e6/IITGN.jpg
+Resized and recompressed for website display. The resized photograph remains available under CC BY-SA 4.0. Display framing uses CSS object-fit.
+
+Caricature asset: assets/destiny-caricatures-v2.webp
+Generated using the built-in image generation tool, with the user-supplied bride and groom photographs as identity references.
+
+Final generation prompt:
+Use case: identity-preserve / illustration-story. Create a refined royal Indian wedding caricature illustration asset using the TWO PROVIDED PHOTOGRAPHS as strict identity references. Photo 1 is Kailash, groom; photo 2 is Adwitia, bride. The faces MUST be recognisably those exact people, not generic handsome/pretty characters. Preserve Kailash's rounded facial proportions, black rectangular glasses, thick FULL rounded black beard and moustache, hairstyle, natural smile and complexion. Preserve Adwitia's rounded face, distinctive eyes and joyful smile, natural complexion, small red bindi, tied-back dark hair with jasmine and jewellery. Preserve his ivory embroidered kurta and her vivid pink blouse with ivory-and-pink Bengali saree. Illustration style: elegant hand-painted watercolor / lightly stylised flattering caricature, slight exaggeration only, natural adult proportions, detailed and identity faithful, no glamour makeover, no slimming faces, no cartoon childlike proportions. Composition: one LANDSCAPE image exactly 2:1, two equal square panels placed side by side with no dividing line or margin. LEFT square: groom three-quarter waist-up relaxed portrait angled slightly toward centre. RIGHT square: bride three-quarter waist-up relaxed portrait angled slightly toward centre. Each person's complete head with adequate breathing room is fully contained in their own half; faces in the upper half of each square, similar scale. Warm pale ivory handmade-paper background with subtle muted botanical flourishes in gold and pink at outer edges. Quiet background; no campus, desks, books or laptops. This is a paired website asset shown as two separate square windows. No text, no lettering, no numbers, no labels, no watermark, no logos, no frame. Character likeness and accurate clothes take priority over ornament.
