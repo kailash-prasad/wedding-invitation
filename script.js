@@ -6,24 +6,27 @@ const music = document.getElementById("bgMusic");
 const soundToggle = document.getElementById("soundToggle");
 const pageMusicToggle = document.getElementById("pageMusicToggle");
 let soundOn = false;
-// Keep the wedding soundtrack intentionally soft beneath the invitation.
-music.volume = 0.18;
+let musicStartPending = false;
+music.volume = 0.25;
 function syncMusicButtons(){
-  soundOn=!music.paused && !music.ended;
-  const label=soundOn?"♫ Music On":"♪ Play Music";
+  soundOn = !music.paused && !music.ended && !music.error;
   [soundToggle,pageMusicToggle].filter(Boolean).forEach(btn=>{
-    btn.textContent=label;
-    btn.setAttribute("aria-label",soundOn?"Pause background music":"Play background music");
-    btn.setAttribute("aria-pressed",String(soundOn));
-    btn.title=soundOn?"Pause music":"Play music";
+    btn.textContent = soundOn ? '♫ Music on' : '♪ Play music';
+    btn.setAttribute('aria-label',soundOn ? 'Pause background music' : 'Play background music');
+    btn.setAttribute('aria-pressed',String(soundOn));
+    btn.classList.toggle('is-playing',soundOn);
+    btn.title=soundOn?'Pause music':'Play music';
   });
 }
-function startMusic(){
-  // Call within the opening click, before any animation timer: mobile browsers
-  // require an active user gesture for audible playback.
-  if(!music.paused)return;
-  const attempt=music.play();
-  attempt?.then(syncMusicButtons).catch(()=>syncMusicButtons());
+function startInvitationMusic(){
+  if(!music.paused || musicStartPending) return;
+  musicStartPending = true;
+  music.muted = false;
+  // Keep play() in the real opening gesture, before any animation timer.
+  const playback = music.play();
+  if(playback && typeof playback.then === 'function'){
+    playback.catch(()=>{}).finally(()=>{musicStartPending=false;syncMusicButtons();});
+  }else{musicStartPending=false;syncMusicButtons();}
 }
 function openMainInvitation(){
   if(!gate || gate.classList.contains("opened")) return;
@@ -36,12 +39,13 @@ function openMainInvitation(){
     if(!location.hash || location.hash==='#home') document.getElementById('welcome-title')?.focus({preventScroll:true});
   },reduce?0:750);
 }
-function openWithMusic(){startMusic();openMainInvitation()}
-openBtn?.addEventListener('click',openWithMusic);
-document.querySelector('.skip-link')?.addEventListener('click',openWithMusic);
-function toggleMusic(e){e?.stopPropagation();if(music.paused)startMusic();else music.pause()}
-['playing','pause','ended','error'].forEach(event=>music.addEventListener(event,syncMusicButtons));
-soundToggle?.addEventListener("click",toggleMusic);pageMusicToggle?.addEventListener("click",toggleMusic);syncMusicButtons();
+openBtn?.addEventListener('click',()=>{startInvitationMusic();openMainInvitation();});
+document.querySelector('.skip-link')?.addEventListener('click',()=>{startInvitationMusic();openMainInvitation();});
+function toggleMusic(e){e?.stopPropagation();if(music.paused)startInvitationMusic();else music.pause();}
+['play','playing','pause','ended','error','emptied'].forEach(event=>music.addEventListener(event,syncMusicButtons));
+soundToggle?.addEventListener('click',toggleMusic);
+pageMusicToggle?.addEventListener('click',toggleMusic);
+syncMusicButtons();
 
 // Countdown is anchored to the same absolute Kolkata instant for every guest worldwide.
 function updateCountdown(){const el=document.getElementById("countdown");if(!el)return;const target=Date.parse(el.dataset.date);const diff=Math.max(0,target-Date.now());const sec=Math.floor(diff/1000);document.getElementById("days").textContent=String(Math.floor(sec/86400)).padStart(2,"0");document.getElementById("hours").textContent=String(Math.floor((sec%86400)/3600)).padStart(2,"0");document.getElementById("minutes").textContent=String(Math.floor((sec%3600)/60)).padStart(2,"0");document.getElementById("seconds").textContent=String(sec%60).padStart(2,"0")}
@@ -106,7 +110,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
     if(cover.classList.contains('is-opening')) return;
-    startMusic();
+    startInvitationMusic();
     cover.classList.add('is-opening');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     setTimeout(openMainInvitation,reduce?0:450);
