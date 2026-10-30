@@ -87,7 +87,7 @@ saveWeekend.addEventListener('click',()=>{
  const esc=v=>String(v).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
  const utc=v=>new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13))-19800000).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
  const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Adwitia Kailash//Wedding//EN','CALSCALE:GREGORIAN'];
- document.querySelectorAll('.js-calendar').forEach((a,i)=>lines.push('BEGIN:VEVENT','UID:wedding-2026-'+i+'@kailashprasad.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''),'DTSTART:'+utc(a.dataset.start),'DTEND:'+utc(a.dataset.end),'SUMMARY:'+esc(a.dataset.title),'DESCRIPTION:'+esc(a.dataset.description),'LOCATION:Vedic Village Spa Resort\\, Kolkata','END:VEVENT'));
+ document.querySelectorAll('.js-calendar').forEach((a,i)=>lines.push('BEGIN:VEVENT','UID:wedding-2026-'+i+'@kailashprasad.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''),'DTSTART:'+utc(a.dataset.start),'DTEND:'+utc(a.dataset.end),'SUMMARY:'+esc(a.dataset.title),'DESCRIPTION:'+esc(a.dataset.description),'LOCATION:'+esc("Vedic Village Spa Resort, Bungalow No. 18, Shikharpur, P.O. Bagu, New Town–Rajarhat, Kolkata, West Bengal – 700135, India"),'END:VEVENT'));
  lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='adwitia-kailash-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
 });
 
