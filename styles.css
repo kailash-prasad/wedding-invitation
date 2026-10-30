@@ -45,7 +45,7 @@ footer{border-top:1px solid rgba(212,179,107,.25)}
 .hero {
   background-image:
     linear-gradient(180deg, rgba(25, 3, 7, .18) 0%, rgba(25, 3, 7, .24) 52%, rgba(25, 3, 7, .58) 100%),
-    url("assets/hero-desktop.png");
+    url("assets/fast/palace-desktop.webp");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -67,7 +67,7 @@ footer{border-top:1px solid rgba(212,179,107,.25)}
   .hero {
     background-image:
       linear-gradient(180deg, rgba(25, 3, 7, .12) 0%, rgba(25, 3, 7, .22) 55%, rgba(25, 3, 7, .62) 100%),
-      url("assets/hero-mobile.png");
+      url("assets/fast/palace-mobile.webp");
     background-position: center center;
   }
 }
@@ -95,7 +95,7 @@ footer{border-top:1px solid rgba(212,179,107,.25)}
   background-image:
     radial-gradient(ellipse at 50% 45%, rgba(44,19,16,.36) 0%, rgba(44,19,16,.22) 30%, rgba(44,19,16,.06) 54%, transparent 72%),
     linear-gradient(180deg, rgba(28,12,9,.06) 0%, rgba(28,12,9,.09) 50%, rgba(28,12,9,.38) 100%),
-    url("assets/hero-desktop.png");
+    url("assets/fast/palace-desktop.webp");
   background-size:cover;
   background-position:center center;
 }
@@ -209,7 +209,7 @@ footer{background:#241014}
     background-image:
       radial-gradient(ellipse at 50% 43%,rgba(44,19,16,.34) 0%,rgba(44,19,16,.18) 34%,rgba(44,19,16,.05) 58%,transparent 76%),
       linear-gradient(180deg,rgba(28,12,9,.04) 0%,rgba(28,12,9,.07) 55%,rgba(28,12,9,.34) 100%),
-      url("assets/hero-mobile.png");
+      url("assets/fast/palace-mobile.webp");
     background-position:center center;
   }
   .heritage{background:linear-gradient(180deg,var(--pearl-ivory),#F1E2CB)}
@@ -688,3 +688,4 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 
 /* Traditional invocation and family invitation additions. Original artwork and theme retained. */
 .family-invitation{margin:22px auto 30px;max-width:650px;color:#fff2da}.family-invitation p{font:500 clamp(1.2rem,3vw,1.6rem)/1.5 "Cormorant Garamond",serif;margin:6px 0}.family-invitation span{font-size:14px;line-height:1.7}.hero{padding-top:90px;padding-bottom:75px}.blessing{text-align:center;padding:55px 22px;background:linear-gradient(145deg,#661221,#32050c);color:#fff4db;border-top:1px solid #a58148;border-bottom:1px solid #a58148}.shloka{font:400 clamp(1.15rem,3vw,2rem)/2 "Noto Serif Devanagari",serif;margin:18px auto}.blessing-meaning{font:italic 17px/1.8 "Cormorant Garamond",Georgia,serif;max-width:650px;margin:0 auto;color:#efdfc0}.gate .heritage-mark,.gate .eyebrow{font-family:"Noto Serif Devanagari","Noto Serif Bengali",serif;letter-spacing:.02em}.attendance-label{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.events .section-heading>.royal-btn{background:#641b24;color:#fff8e9}.story-year{font-size:1.25rem}.gate-content{max-height:100svh;overflow-y:auto}.gate .heritage-mark{margin-top:10px}input:disabled,select:disabled{opacity:.5}@media(max-width:650px){.blessing-meaning br{display:none}.family-invitation{margin:18px auto 25px}.family-invitation span{font-size:13px}.gate h1{font-size:clamp(2.8rem,12vw,4.4rem)}.gate-content{padding-top:25px;padding-bottom:25px}.gate .eyebrow{font-size:14px}}
+

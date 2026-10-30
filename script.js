@@ -139,3 +139,15 @@ document.querySelectorAll('.event-card').forEach(card=>{
   const slot=card.querySelector('.event-icon'); if(slot) slot.innerHTML=icon;
 });
 
+
+
+// Keep the offscreen story artwork out of the opening download queue.
+const storyChapter=document.getElementById('our-story');
+if(storyChapter){
+  const storyArtObserver=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){
+      storyChapter.classList.add('is-near');storyArtObserver.disconnect();
+    }
+  },{rootMargin:'500px'});
+  storyArtObserver.observe(storyChapter);
+}

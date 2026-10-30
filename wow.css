@@ -9,7 +9,7 @@
 .invitation-envelope{position:relative;display:block;width:min(420px,86vw,54.66svh);aspect-ratio:2/3;min-height:0;padding:0;border:1px solid #c3a779;border-radius:3px;cursor:pointer;background:#4b1423;box-shadow:0 35px 85px #0e0109aa,0 8px 18px #10020a66,0 0 0 5px #c3a77912;overflow:visible;isolation:isolate;transform:translateZ(0);transition:transform .7s cubic-bezier(.22,.7,.18,1),box-shadow .7s}
 .invitation-envelope:focus-visible{outline:3px solid #f0d494;outline-offset:8px}
 .invitation-envelope:before{content:"";position:absolute;inset:3px -4px -3px 4px;background:#d2ba95;border:1px solid #b69663;border-radius:3px;z-index:-1;box-shadow:2px 2px 0 #f3e6c8}
-.invitation-card-face{position:absolute;inset:0;z-index:3;display:block;padding:0;border-radius:2px;background:#f5ead2 url('assets/invitation-cover-v2.webp') center/100% 100% no-repeat;transform-origin:0% 50%;backface-visibility:hidden;transition:transform .9s cubic-bezier(.25,.65,.2,1),filter .7s,opacity .7s;box-shadow:inset 0 0 0 1px #d2b57777}
+.invitation-card-face{position:absolute;inset:0;z-index:3;display:block;padding:0;border-radius:2px;background:#f5ead2 url('assets/fast/cover.webp') center/100% 100% no-repeat;transform-origin:0% 50%;backface-visibility:hidden;transition:transform .9s cubic-bezier(.25,.65,.2,1),filter .7s,opacity .7s;box-shadow:inset 0 0 0 1px #d2b57777}
 .cover-kicker,.cover-divider,.cover-date{display:none!important}
 .cover-monogram{position:absolute;top:35%;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:.10em;margin:0;font:500 clamp(3rem,12vw,5.4rem)/1.1 "Cormorant Garamond",Georgia,serif;letter-spacing:.025em;color:#f7e2b3;text-shadow:0 2px 2px #35101f,0 0 24px #ddae4d20}
 .cover-monogram i{font:italic 400 .40em/1 "Cormorant Garamond",Georgia,serif;color:#d9b471;margin:0 .08em}
@@ -142,3 +142,7 @@ footer .footer-small{font-size:10px;letter-spacing:.08em;line-height:1.8;max-wid
 /* Preserve the complete new portraits, including their original framing. */
 .couple-section .portrait{aspect-ratio:auto}
 .couple-section .portrait img{display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain}
+
+
+/* The opaque invitation folio supplies its own cover artwork. */
+.gate{background:#35151a!important}.gate::after{display:none}
