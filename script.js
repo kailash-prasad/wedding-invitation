@@ -37,7 +37,7 @@ function openMainInvitation(){
     gate.style.display='none';
     gate.setAttribute('aria-hidden','true');
     if(!location.hash || location.hash==='#home') document.getElementById('welcome-title')?.focus({preventScroll:true});
-  },reduce?0:(gate.classList.contains('is-unsealing')?300:750));
+  },reduce?0:(gate.classList.contains('is-unsealing')?400:750));
 }
 openBtn?.addEventListener('click',()=>{startInvitationMusic();openMainInvitation();});
 document.querySelector('.skip-link')?.addEventListener('click',()=>{startInvitationMusic();openMainInvitation();});
@@ -105,7 +105,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   document.body.classList.add('cover-closed');
   const cover=document.createElement('div');
   cover.className='invitation-cover';
-  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-leaf cover-leaf-left" aria-hidden="true"></span><span class="cover-leaf cover-leaf-right" aria-hidden="true"></span><span class="cover-seam" aria-hidden="true"></span><span class="cover-monogram"><span>A</span><i>&amp;</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>A &amp; K</span></span></button>`;
+  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-light" aria-hidden="true"></span><span class="cover-leaf cover-leaf-left" aria-hidden="true"></span><span class="cover-leaf cover-leaf-right" aria-hidden="true"></span><span class="cover-seam" aria-hidden="true"></span><span class="cover-monogram"><span>A</span><i>&amp;</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>A &amp; K</span><span class="seal-shimmer" aria-hidden="true"></span></span><span class="cover-specks" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>`;
   gate.prepend(cover);
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{
@@ -114,8 +114,8 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
     gate.classList.add('is-unsealing');
     cover.classList.add('is-opening');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(openMainInvitation,reduce?0:850);
-    setTimeout(()=>cover.remove(),reduce?0:1200);
+    setTimeout(openMainInvitation,reduce?0:2600);
+    setTimeout(()=>cover.remove(),reduce?0:3100);
   };
   envelope.addEventListener('click',reveal,{once:true});
 
@@ -152,4 +152,5 @@ if(storyChapter){
   },{rootMargin:'500px'});
   storyArtObserver.observe(storyChapter);
 }
+
 
