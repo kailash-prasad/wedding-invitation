@@ -74,7 +74,7 @@ form?.addEventListener("submit",e=>{
   const events=[...form.querySelectorAll('input[name="events"]:checked')].map(x=>x.value);
   const attending=v("attendance")==="No"?"Not attending":events.length?events.join("; "):"Not selected / not sure yet";
   const help=v("attendance")!=="No" && v("travelHelp")==="Yes"?"Yes — I would like assistance with travel/stay arrangements.":"No";
-  const plain=`Wedding RSVP\n\nAttendance: ${v("attendance")}\nName: ${v("guestName")}\nGuests: ${v("attendance")==="No"?"0":v("guestCount")}\nCelebrations: ${attending}\nFood: ${v("attendance")==="No"?"Not applicable":v("foodPreference")}\nStay / travel help: ${help}\nMessage: ${v("guestMessage")||"-"}`;
+  const plain=`Kailash & Adwitia — Wedding RSVP\n\nAttendance: ${v("attendance")}\nName: ${v("guestName")}\nGuests: ${v("attendance")==="No"?"0":v("guestCount")}\nCelebrations: ${attending}\nFood: ${v("attendance")==="No"?"Not applicable":v("foodPreference")}\nStay / travel help: ${help}\nMessage: ${v("guestMessage")||"-"}`;
   window.open(`https://wa.me/918256995690?text=${encodeURIComponent(plain)}`,"_blank","noopener");
   document.getElementById("formStatus").textContent="Opening WhatsApp…";
 });
@@ -86,9 +86,9 @@ const saveWeekend=document.createElement('button');saveWeekend.type='button';sav
 saveWeekend.addEventListener('click',()=>{
  const esc=v=>String(v).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
  const utc=v=>new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13))-19800000).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
- const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Adwitia Kailash//Wedding//EN','CALSCALE:GREGORIAN'];
+ const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Kailash Adwitia//Wedding//EN','CALSCALE:GREGORIAN'];
  document.querySelectorAll('.js-calendar').forEach((a,i)=>lines.push('BEGIN:VEVENT','UID:wedding-2026-'+i+'@kailashprasad.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''),'DTSTART:'+utc(a.dataset.start),'DTEND:'+utc(a.dataset.end),'SUMMARY:'+esc(a.dataset.title),'DESCRIPTION:'+esc(a.dataset.description),'LOCATION:'+esc("Vedic Village Spa Resort, Bungalow No. 18, Shikharpur, P.O. Bagu, New Town–Rajarhat, Kolkata, West Bengal – 700135, India"),'END:VEVENT'));
- lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='adwitia-kailash-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
+ lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='kailash-adwitia-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
 });
 
 function makePetal(){if(document.body.classList.contains("locked")||document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
@@ -105,7 +105,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   document.body.classList.add('cover-closed');
   const cover=document.createElement('div');
   cover.className='invitation-cover';
-  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Adwitia and Kailash's wedding invitation"><span class="invitation-card-face"><span class="cover-light" aria-hidden="true"></span><span class="cover-leaf cover-leaf-left" aria-hidden="true"></span><span class="cover-leaf cover-leaf-right" aria-hidden="true"></span><span class="cover-seam" aria-hidden="true"></span><span class="cover-monogram"><span>A</span><i>&amp;</i><span>K</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>A &amp; K</span><span class="seal-shimmer" aria-hidden="true"></span></span><span class="cover-specks" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>`;
+  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Kailash and Adwitia's wedding invitation"><span class="invitation-card-face"><span class="cover-light" aria-hidden="true"></span><span class="cover-leaf cover-leaf-left" aria-hidden="true"></span><span class="cover-leaf cover-leaf-right" aria-hidden="true"></span><span class="cover-seam" aria-hidden="true"></span><span class="cover-monogram"><span>K</span><i>&amp;</i><span>A</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>K &amp; A</span><span class="seal-shimmer" aria-hidden="true"></span></span><span class="cover-specks" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>`;
   gate.prepend(cover);
   const envelope=cover.querySelector('.invitation-envelope');
   const reveal=()=>{

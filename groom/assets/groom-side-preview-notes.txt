@@ -1,0 +1,7 @@
+Groom-side WhatsApp preview
+Asset: groom/assets/wedding-preview-groom-v1.jpg
+Tool: built-in ImageGen, edit of assets/wedding-preview-royal-v4.jpg.
+Generated: 31 October 2026.
+
+Prompt:
+Use case: text-localization. Edit target: the attached square royal wedding sharing-preview card. Preserve its existing warm ivory paper, delicate antique-gold botanical palace arch, maroon lotus corners and palace/water illustration. Change ONLY the central names and their order to a groom-first invitation. Exact central text, top to bottom: 'Kailash Prasad', then '&', then 'Adwitia Biswas', then '4–5 December 2026', then 'Vedic Village · Kolkata'. Render both full names each on one unbroken line, with elegant highly legible burgundy wedding calligraphy, sized to fit comfortably inside the existing central space. Kailash Prasad must be the FIRST and uppermost name, Adwitia Biswas SECOND beneath the ampersand. Keep the square composition, generous margins, and readable date. Do not add any other wording, and do not change the artwork's style or replace the background.
