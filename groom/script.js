@@ -33,10 +33,13 @@ function openMainInvitation(){
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.body.classList.remove('locked','cover-closed');
   gate.classList.add('opened');
+  gate.setAttribute('aria-busy','false');
+  document.getElementById('page').inert=false;
   setTimeout(()=>{
     gate.style.display='none';
     gate.setAttribute('aria-hidden','true');
-    if(!location.hash || location.hash==='#home') document.getElementById('welcome-title')?.focus({preventScroll:true});
+    gate.querySelector('.invitation-cover')?.remove();
+    if(!location.hash || location.hash==='#home' || location.hash==='#page') document.getElementById('welcome-title')?.focus({preventScroll:true});
   },reduce?0:(gate.classList.contains('is-unsealing')?400:750));
 }
 openBtn?.addEventListener('click',()=>{startInvitationMusic();openMainInvitation();});
@@ -99,29 +102,71 @@ const threadPath=document.getElementById('threadPath');
 function drawStoryThread(){if(!threadPath)return;const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);const progress=Math.min(1,Math.max(0,scrollY/max));threadPath.style.strokeDashoffset=String(1400-(1400*progress));}
 addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resize',drawStoryThread,{passive:true});drawStoryThread();
 
-// --- Ultimate wow pass: closed invitation, mantra choreography, illustrated programme ---
+// A wax seal parts before the manuscript unfolds; music begins in the tap itself.
 (function initInvitationCover(){
   if(!gate || gate.querySelector('.invitation-cover')) return;
+  const page=document.getElementById('page');
+  page.inert=true;
   document.body.classList.add('cover-closed');
   const cover=document.createElement('div');
   cover.className='invitation-cover';
-  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Kailash and Adwitia's wedding invitation"><span class="invitation-card-face"><span class="cover-light" aria-hidden="true"></span><span class="cover-leaf cover-leaf-left" aria-hidden="true"></span><span class="cover-leaf cover-leaf-right" aria-hidden="true"></span><span class="cover-seam" aria-hidden="true"></span><span class="cover-monogram"><span>K</span><i>&amp;</i><span>A</span></span><span class="cover-tap">Tap to open</span></span><span class="cover-seal"><span>K &amp; A</span><span class="seal-shimmer" aria-hidden="true"></span></span><span class="cover-specks" aria-hidden="true"><i></i><i></i><i></i><i></i></span></button>`;
+  cover.innerHTML=`<button class="invitation-envelope" type="button" aria-label="Open Kailash and Adwitia's wedding invitation"><span class="manuscript-page" aria-hidden="true"><span class="manuscript-kicker">Our forever begins</span><span class="manuscript-names"><span>Kailash Prasad</span><i>&amp;</i><span>Adwitia Biswas</span></span><span class="manuscript-date">4–5 December 2026<br/>Vedic Village · Kolkata</span></span><span class="invitation-card-face" aria-hidden="true"><span class="cover-scroll cover-scroll-top"></span><span class="cover-scroll cover-scroll-bottom"></span><span class="cover-light"></span><span class="cover-monogram"><span>K</span><i>&amp;</i><span>A</span></span><span class="cover-tap">Tap the seal to open</span></span><span class="cover-seal" aria-hidden="true"><span class="seal-half seal-half-left"><span>K &amp; A</span></span><span class="seal-half seal-half-right"><span>K &amp; A</span></span><svg class="seal-crack" viewBox="0 0 100 100"><path pathLength="1" d="M52 0 46 25 56 43 44 61 54 80 48 100"/></svg></span></button><button class="cover-skip" type="button" hidden>Skip opening</button>`;
   gate.prepend(cover);
   const envelope=cover.querySelector('.invitation-envelope');
-  const reveal=()=>{
+  const skip=cover.querySelector('.cover-skip');
+  let openingTimer;
+  const finish=()=>{clearTimeout(openingTimer);openMainInvitation();};
+  skip.addEventListener('click',finish);
+  document.querySelector('.skip-link')?.addEventListener('click',()=>clearTimeout(openingTimer));
+  envelope.addEventListener('click',()=>{
     if(cover.classList.contains('is-opening')) return;
     startInvitationMusic();
-    gate.classList.add('is-unsealing');
-    cover.classList.add('is-opening');
     const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(openMainInvitation,reduce?0:2600);
-    setTimeout(()=>cover.remove(),reduce?0:3100);
-  };
-  envelope.addEventListener('click',reveal,{once:true});
-
+    envelope.disabled=true;
+    gate.classList.add('is-unsealing');
+    gate.setAttribute('aria-busy','true');
+    cover.classList.add('is-opening');
+    if(!reduce){skip.hidden=false;skip.focus({preventScroll:true});}
+    openingTimer=setTimeout(finish,reduce?0:4400);
+  },{once:true});
 })();
 
-
+// Crossfade only while this photographic chapter is in view.
+(function initMemoryInterlude(){
+  const chapter=document.getElementById('memory-interlude');
+  if(!chapter) return;
+  const slides=[...chapter.querySelectorAll('.memory-slide')];
+  const pickers=[...chapter.querySelectorAll('.memory-dot')];
+  const toggle=chapter.querySelector('.memory-toggle');
+  const motion=matchMedia('(prefers-reduced-motion: reduce)');
+  let current=0,visible=false,userPaused=false,timer,requestId=0;
+  const canPlay=()=>visible&&!document.hidden&&!motion.matches&&!userPaused;
+  async function show(index){
+    const request=++requestId;
+    try{await slides[index].querySelector('img').decode();}catch{return;}
+    if(request!==requestId) return;
+    current=index;
+    slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===index);slide.setAttribute('aria-hidden',String(i!==index));});
+    pickers.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  }
+  function update(){
+    clearTimeout(timer);
+    const playing=canPlay();
+    chapter.classList.toggle('is-playing',playing);
+    toggle.hidden=motion.matches;
+    toggle.setAttribute('aria-pressed',String(!userPaused));
+    toggle.textContent=userPaused?'Play slideshow':'Pause slideshow';
+    if(playing) timer=setTimeout(async()=>{await show((current+1)%slides.length);update();},6500);
+  }
+  pickers.forEach((button,i)=>button.addEventListener('click',async()=>{clearTimeout(timer);await show(i);update();}));
+  toggle.addEventListener('click',()=>{userPaused=!userPaused;update();});
+  chapter.querySelector('.memory-controls').hidden=false;
+  const visibilityObserver=new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);update();},{threshold:.15});
+  visibilityObserver.observe(chapter);
+  document.addEventListener('visibilitychange',update);
+  motion.addEventListener('change',update);
+  update();
+})();
 
 const programmeIcons={
   mehendi:`<svg viewBox="0 0 96 96" aria-hidden="true"><path d="M55 79c-4-9-3-17-1-28l3-21c1-6-7-8-9-2l-4 20 1-29c1-6-8-7-9-1l-1 29-3-25c-1-6-10-4-9 2l3 26-5-17c-2-6-10-3-8 3l7 25c3 12 11 20 23 22 5 1 9-1 12-4Z"/><path d="M32 57c-6-2-11-1-15 3M58 54c7-4 12-3 17 1M31 37c5 3 9 7 12 12M23 65c8 2 14 7 18 14"/><circle cx="37" cy="60" r="5"/><path d="M37 55c0-7 8-11 13-7M37 65c6 1 10 5 11 10"/></svg>`,
@@ -152,6 +197,7 @@ if(storyChapter){
   },{rootMargin:'500px'});
   storyArtObserver.observe(storyChapter);
 }
+
 
 
 
