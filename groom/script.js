@@ -91,16 +91,6 @@ form?.addEventListener('submit',e=>{
 
 const attendance=document.getElementById('attendance');
 attendance?.addEventListener('change',()=>{const absent=attendance.value==='No';document.querySelectorAll('#guestCount, input[name="events"], #foodPreference, #travelHelp').forEach(el=>{el.disabled=absent});});
-// Download one calendar file containing all five celebrations.
-const saveWeekend=document.createElement('button');saveWeekend.type='button';saveWeekend.className='royal-btn';saveWeekend.textContent='Download all events';document.querySelector('.events .section-heading')?.append(saveWeekend);
-saveWeekend.addEventListener('click',()=>{
- const esc=v=>String(v).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
- const utc=v=>new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13))-19800000).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
- const lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Kailash Adwitia//Wedding//EN','CALSCALE:GREGORIAN'];
- document.querySelectorAll('.js-calendar').forEach((a,i)=>lines.push('BEGIN:VEVENT','UID:wedding-2026-'+i+'@kailashprasad.com','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,''),'DTSTART:'+utc(a.dataset.start),'DTEND:'+utc(a.dataset.end),'SUMMARY:'+esc(a.dataset.title),'DESCRIPTION:'+esc(a.dataset.description),'LOCATION:'+esc("Vedic Village Spa Resort, Bungalow No. 18, Shikharpur, P.O. Bagu, New Town–Rajarhat, Kolkata, West Bengal – 700135, India"),'END:VEVENT'));
- lines.push('END:VCALENDAR');const u=URL.createObjectURL(new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));const a=document.createElement('a');a.href=u;a.download='kailash-adwitia-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(u),10000);
-});
-
 function makePetal(){if(document.body.classList.contains("locked")||document.hidden||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const p=document.createElement("i");p.className="petal";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(9+Math.random()*7)+"s";p.style.setProperty("--drift",(-70+Math.random()*140)+"px");p.style.transform=`rotate(${Math.random()*360}deg) scale(${.55+Math.random()*.5})`;document.getElementById("petals")?.appendChild(p);setTimeout(()=>p.remove(),16500)}
 setInterval(makePetal,1500);for(let i=0;i<4;i++)setTimeout(makePetal,i*450);
 
