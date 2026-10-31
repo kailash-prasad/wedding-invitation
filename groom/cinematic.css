@@ -103,3 +103,52 @@
 }
 @media(max-width:360px){.album-thumbnails{grid-template-columns:repeat(4,minmax(0,1fr))}.album-thumb{aspect-ratio:1;max-height:76px}.album-caption-text{font-size:19px}.album-heading h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){.album-slide.is-active,.album-thumb{transition:none!important}}
+
+
+/* Compact guest guide: three linked travel rows and brief essentials. */
+.guest-guide.compact-guest-guide{padding:46px 22px 42px;background:linear-gradient(180deg,#fff9ee,#f7efe2);color:#56312c}
+.compact-guide-wrap{max-width:1060px;margin:auto}
+.compact-guide-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 10px}
+.compact-guide-heading .eyebrow{font:500 9px/1.5 Montserrat,Arial,sans-serif;letter-spacing:.2em;color:#9b743d;margin:0 0 7px}
+.compact-guide-heading h2{font:500 42px/1.05 'Cormorant Garamond',Georgia,serif;color:#641b24;margin:0}
+.guide-map-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border:1px solid #b89a6359;border-radius:25px;color:#71303b;text-decoration:none;font:500 11px/1.4 Montserrat,Arial,sans-serif;white-space:nowrap}
+.guide-destination{font:400 13px/1.5 Montserrat,Arial,sans-serif;color:#785f50;margin:0 0 20px}
+.guide-destination span{color:#8d6e4c;white-space:nowrap}
+.compact-guide-body{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(240px,1fr);gap:36px;align-items:start}
+.arrival-routes{border-top:1px solid #bca17245}
+.arrival-route{display:flex;align-items:center;gap:15px;padding:14px 0;min-height:78px;text-align:left;border-bottom:1px solid #bca17245;text-decoration:none;color:#56312c;transition:background .2s}
+.arrival-route:hover{background:#c9a46a0a}
+.arrival-icon{display:grid;place-items:center;flex:0 0 30px;color:#a17a3c}
+.arrival-icon svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.arrival-name{flex:1;min-width:0}
+.arrival-name strong{display:block;font:500 23px/1.1 'Cormorant Garamond',Georgia,serif;color:#523027}
+.arrival-name small{display:block;font:400 11px/1.5 Montserrat,Arial,sans-serif;color:#806c5d;margin-top:4px}
+.arrival-distance{flex-shrink:0;text-align:right}
+.arrival-distance strong{display:block;font:500 24px/1 'Cormorant Garamond',Georgia,serif;color:#6a2632;font-variant-numeric:tabular-nums;white-space:nowrap}
+.arrival-distance strong span{font-size:16px}
+.arrival-distance small{display:block;font:400 10px/1.5 Montserrat,Arial,sans-serif;color:#8c6638;margin-top:5px;white-space:nowrap}
+.guest-essentials{border-left:1px solid #bca17245;padding-left:30px;text-align:left}
+.guest-essential+.guest-essential{margin-top:18px}
+.guest-essential h3{font:500 21px/1.15 'Cormorant Garamond',Georgia,serif;color:#684335;margin:0 0 5px}
+.guest-essential p{font:400 12px/1.6 Montserrat,Arial,sans-serif;color:#806b5c;margin:0}
+.guest-essential a{color:#74313c;text-decoration:underline;text-underline-offset:3px}
+.guide-route-note{font:400 11px/1.6 Montserrat,Arial,sans-serif;color:#887766;margin:16px 0 0;max-width:850px;text-align:left}
+.compact-guest-guide a:focus-visible{outline:2px solid #996d37;outline-offset:4px}
+@media(max-width:700px){
+ .guest-guide.compact-guest-guide{padding:30px 20px 28px}
+ .compact-guide-heading{gap:12px;margin-bottom:10px}.compact-guide-heading h2{font-size:34px}.compact-guide-heading .eyebrow{font-size:8px;margin-bottom:6px}
+ .guide-map-link{font-size:11px;padding:10px 12px;min-height:42px}
+ .guide-destination{font-size:11px;line-height:1.7;margin-bottom:16px}
+ .compact-guide-body{grid-template-columns:1fr;gap:20px}
+ .arrival-route{min-height:74px;padding:12px 0;gap:10px}
+ .arrival-icon{flex-basis:27px}.arrival-icon svg{width:23px;height:23px}
+ .arrival-name strong{font-size:23px}.arrival-name small{font-size:11px;max-width:165px}
+ .arrival-distance strong{font-size:24px}.arrival-distance strong span{font-size:15px}.arrival-distance small{font-size:11px}
+ .guest-essentials{padding:0;border-left:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+ .guest-essential+.guest-essential{margin-top:0}.guest-essential:last-child{grid-column:1 / -1}
+ .guest-essential h3{font-size:20px;margin-bottom:4px}.guest-essential p{font-size:12px;line-height:1.6}
+ .guest-essential:last-child h3{display:inline;font-size:18px;margin-right:6px}.guest-essential:last-child p{display:inline}
+ .guide-route-note{font-size:11px;line-height:1.65;margin-top:16px}
+}
+@media(max-width:360px){.guest-guide.compact-guest-guide{padding-left:16px;padding-right:16px}.compact-guide-heading h2{font-size:31px}.guide-map-link{font-size:10px;padding:9px 10px}.arrival-name strong{font-size:22px}.arrival-name small{max-width:126px}.arrival-route{gap:8px}}
+@media(prefers-reduced-motion:reduce){.arrival-route{transition:none}}
