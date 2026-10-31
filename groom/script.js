@@ -66,23 +66,33 @@ dialog?.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")showGalleryImage(g
 dialog?.addEventListener("touchstart",e=>{touchStartX=e.changedTouches[0].clientX},{passive:true});
 dialog?.addEventListener("touchend",e=>{const delta=e.changedTouches[0].clientX-touchStartX;if(Math.abs(delta)>45)showGalleryImage(galleryIndex+(delta<0?1:-1))},{passive:true});
 
-// A deliberately short, WhatsApp-first RSVP — designed to take about 30 seconds.
-const form=document.getElementById("rsvpForm");
-form?.addEventListener("submit",e=>{
+// Prepare a WhatsApp reply; the guest confirms sending inside WhatsApp.
+const form=document.getElementById('rsvpForm');
+const guestName=document.getElementById('guestName');
+guestName?.addEventListener('input',()=>guestName.setCustomValidity(''));
+form?.addEventListener('submit',e=>{
   e.preventDefault();
-  const v=id=>document.getElementById(id)?.value?.trim?.() ?? document.getElementById(id)?.value ?? "";
-  const events=[...form.querySelectorAll('input[name="events"]:checked')].map(x=>x.value);
-  const attending=v("attendance")==="No"?"Not attending":events.length?events.join("; "):"Not selected / not sure yet";
-  const help=v("attendance")!=="No" && v("travelHelp")==="Yes"?"Yes — I would like assistance with travel/stay arrangements.":"No";
-  const plain=`Kailash & Adwitia — Wedding RSVP\n\nAttendance: ${v("attendance")}\nName: ${v("guestName")}\nGuests: ${v("attendance")==="No"?"0":v("guestCount")}\nCelebrations: ${attending}\nFood: ${v("attendance")==="No"?"Not applicable":v("foodPreference")}\nStay / travel help: ${help}\nMessage: ${v("guestMessage")||"-"}`;
-  window.open(`https://wa.me/918256995690?text=${encodeURIComponent(plain)}`,"_blank","noopener");
-  document.getElementById("formStatus").textContent="Opening WhatsApp…";
+  const value=id=>String(document.getElementById(id)?.value??'').trim();
+  if(!value('guestName')){
+    guestName.setCustomValidity('Please enter your name.');guestName.reportValidity();return;
+  }
+  guestName.setCustomValidity('');
+  const response=value('attendance'),absent=response==='No';
+  const events=[...form.querySelectorAll('input[name="events"]:checked')].map(el=>el.value);
+  const labels={Yes:'Joyfully attending',No:'Unable to attend',Unsure:'Still making plans'};
+  const plain=`Kailash & Adwitia — Wedding RSVP\n\nAttendance: ${labels[response]||response}\nName: ${value('guestName')}\nGuests: ${absent?'0':value('guestCount')}\nCelebrations: ${absent?'Not attending':events.length?events.join('; '):'Not selected / not sure yet'}\nFood: ${absent?'Not applicable':value('foodPreference')}\nStay / travel help: ${!absent&&value('travelHelp')==='Yes'?'Yes — assistance requested.':'No'}\nMessage: ${value('guestMessage')||'-'}`;
+  const url='https://wa.me/918256995690?text='+encodeURIComponent(plain);
+  const status=document.getElementById('formStatus');status.replaceChildren();
+  const fallback=document.createElement('a');fallback.href=url;fallback.target='_blank';fallback.rel='noopener';
+  fallback.textContent='Open your RSVP in WhatsApp';
+  status.append(fallback,document.createElement('br'),'Please tap Send in WhatsApp to complete your RSVP.');
+  window.open(url,'_blank','noopener');
 });
 
 const attendance=document.getElementById('attendance');
 attendance?.addEventListener('change',()=>{const absent=attendance.value==='No';document.querySelectorAll('#guestCount, input[name="events"], #foodPreference, #travelHelp').forEach(el=>{el.disabled=absent});});
 // Download one calendar file containing all five celebrations.
-const saveWeekend=document.createElement('button');saveWeekend.type='button';saveWeekend.className='royal-btn';saveWeekend.textContent='Save all events';document.querySelector('.events .section-heading')?.append(saveWeekend);
+const saveWeekend=document.createElement('button');saveWeekend.type='button';saveWeekend.className='royal-btn';saveWeekend.textContent='Download all events';document.querySelector('.events .section-heading')?.append(saveWeekend);
 saveWeekend.addEventListener('click',()=>{
  const esc=v=>String(v).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
  const utc=v=>new Date(Date.UTC(+v.slice(0,4),+v.slice(4,6)-1,+v.slice(6,8),+v.slice(9,11),+v.slice(11,13))-19800000).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
@@ -152,5 +162,6 @@ if(storyChapter){
   },{rootMargin:'500px'});
   storyArtObserver.observe(storyChapter);
 }
+
 
 
