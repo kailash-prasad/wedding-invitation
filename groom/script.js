@@ -57,10 +57,10 @@ updateCountdown();setInterval(updateCountdown,1000);
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.12});document.querySelectorAll(".reveal-on-scroll").forEach(el=>observer.observe(el));
 // Gallery: tap/click, keyboard navigation and touch swipe.
 const dialog=document.getElementById("lightbox"), lightboxImage=document.getElementById("lightboxImage");
-const galleryImages=[...document.querySelectorAll(".gallery-item img")];
+const galleryImages=[...document.querySelectorAll(".album-slide img")];
 let galleryIndex=0, touchStartX=0;
 function showGalleryImage(index){if(!galleryImages.length)return;galleryIndex=(index+galleryImages.length)%galleryImages.length;const img=galleryImages[galleryIndex];lightboxImage.src=img.currentSrc||img.src;lightboxImage.alt=img.alt}
-galleryImages.forEach((img,i)=>img.parentElement.addEventListener("click",()=>{showGalleryImage(i);dialog.showModal()}));
+
 document.getElementById("closeLightbox")?.addEventListener("click",()=>dialog.close());
 document.getElementById("prevLightbox")?.addEventListener("click",()=>showGalleryImage(galleryIndex-1));
 document.getElementById("nextLightbox")?.addEventListener("click",()=>showGalleryImage(galleryIndex+1));
@@ -131,40 +131,88 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
   },{once:true});
 })();
 
-// Crossfade only while this photographic chapter is in view.
-(function initMemoryInterlude(){
-  const chapter=document.getElementById('memory-interlude');
-  if(!chapter) return;
-  const slides=[...chapter.querySelectorAll('.memory-slide')];
-  const pickers=[...chapter.querySelectorAll('.memory-dot')];
-  const toggle=chapter.querySelector('.memory-toggle');
+// One seven-photo album, between the journey and the wedding programme.
+(function initWeddingAlbum(){
+  const chapter=document.getElementById('gallery');
+  if(!chapter?.classList.contains('photo-slideshow')) return;
+  const slides=[...chapter.querySelectorAll('.album-slide')];
+  const thumbs=[...chapter.querySelectorAll('.album-thumb')];
+  const toggle=chapter.querySelector('.album-toggle');
+  const caption=chapter.querySelector('.album-caption-text');
+  const count=chapter.querySelector('.album-count');
+  const status=chapter.querySelector('.album-status');
+  const openPhoto=chapter.querySelector('.album-open');
+  const stage=chapter.querySelector('.album-stage');
   const motion=matchMedia('(prefers-reduced-motion: reduce)');
-  let current=0,visible=false,userPaused=false,timer,requestId=0;
-  const canPlay=()=>visible&&!document.hidden&&!motion.matches&&!userPaused;
-  async function show(index){
-    const request=++requestId;
-    try{await slides[index].querySelector('img').decode();}catch{return;}
-    if(request!==requestId) return;
-    current=index;
-    slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===index);slide.setAttribute('aria-hidden',String(i!==index));});
-    pickers.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
-  }
+  let current=0,target=0,visible=false,userPaused=false,timer,fadeTimer,requestId=0,down,swiped=false;
+  const canPlay=()=>visible&&!document.hidden&&!motion.matches&&!userPaused&&!dialog?.open;
   function update(){
     clearTimeout(timer);
-    const playing=canPlay();
-    chapter.classList.toggle('is-playing',playing);
+    chapter.classList.toggle('is-playing',canPlay());
     toggle.hidden=motion.matches;
     toggle.setAttribute('aria-pressed',String(!userPaused));
     toggle.textContent=userPaused?'Play slideshow':'Pause slideshow';
-    if(playing) timer=setTimeout(async()=>{await show((current+1)%slides.length);update();},6500);
+    if(canPlay()) timer=setTimeout(()=>show(current+1,false),7200);
   }
-  pickers.forEach((button,i)=>button.addEventListener('click',async()=>{clearTimeout(timer);await show(i);update();}));
+  async function show(next,manual=true){
+    target=(next+slides.length)%slides.length;
+    const index=target,request=++requestId;
+    clearTimeout(timer);
+    if(index===current){update();return;}
+    try{await slides[index].querySelector('img').decode();}catch{update();return;}
+    if(request!==requestId) return;
+    clearTimeout(fadeTimer);
+    const old=slides[current],incoming=slides[index];
+    slides.forEach(slide=>{slide.classList.remove('is-active','is-previous','is-entering');slide.setAttribute('aria-hidden','true');});
+    old.classList.add('is-previous');
+    incoming.classList.add('is-active');
+    incoming.setAttribute('aria-hidden','false');
+    current=index;
+    caption.textContent=incoming.dataset.caption;
+    count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    openPhoto.setAttribute('aria-label','View photo '+(index+1)+' of '+slides.length+' full screen');
+    thumbs.forEach((thumb,i)=>thumb.setAttribute('aria-pressed',String(i===index)));
+    if(manual) status.textContent='Photo '+(index+1)+' of '+slides.length+': '+incoming.dataset.caption;
+    if(motion.matches){old.classList.remove('is-previous');}
+    else{
+      incoming.classList.add('is-entering');
+      incoming.getBoundingClientRect();
+      requestAnimationFrame(()=>{
+        if(request!==requestId)return;
+        incoming.classList.remove('is-entering');
+        fadeTimer=setTimeout(()=>old.classList.remove('is-previous'),1150);
+      });
+    }
+    update();
+  }
+  chapter.querySelector('.album-prev').addEventListener('click',()=>show(target-1));
+  chapter.querySelector('.album-next').addEventListener('click',()=>show(target+1));
+  thumbs.forEach((thumb,i)=>thumb.addEventListener('click',()=>show(i)));
   toggle.addEventListener('click',()=>{userPaused=!userPaused;update();});
-  chapter.querySelector('.memory-controls').hidden=false;
-  const visibilityObserver=new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);update();},{threshold:.15});
-  visibilityObserver.observe(chapter);
+  chapter.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+      e.preventDefault();show(target+(e.key==='ArrowRight'?1:-1));
+    }
+  });
+  stage.addEventListener('pointerdown',e=>{
+    if(e.target.closest('.album-arrow')) return;
+    down={x:e.clientX,y:e.clientY};swiped=false;
+  });
+  stage.addEventListener('pointerup',e=>{
+    if(!down)return;
+    const dx=e.clientX-down.x,dy=e.clientY-down.y;down=null;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.2){swiped=true;show(target+(dx<0?1:-1));}
+  });
+  stage.addEventListener('pointercancel',()=>down=null);
+  openPhoto.addEventListener('click',e=>{
+    if(swiped&&e.detail!==0)return;
+    showGalleryImage(current);dialog.showModal();update();
+  });
+  dialog?.addEventListener('close',()=>show(galleryIndex,false));
+  new IntersectionObserver(entries=>{visible=entries.some(entry=>entry.isIntersecting);update();},{threshold:.15}).observe(chapter);
   document.addEventListener('visibilitychange',update);
   motion.addEventListener('change',update);
+  chapter.querySelector('.album-controls').hidden=false;
   update();
 })();
 
@@ -197,6 +245,7 @@ if(storyChapter){
   },{rootMargin:'500px'});
   storyArtObserver.observe(storyChapter);
 }
+
 
 
 
