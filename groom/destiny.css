@@ -1,0 +1,189 @@
+@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:300 700;font-display:swap;src:url("assets/fast/invitation-serif-italic.woff2") format("woff2");}
+/* Locally served invitation fonts keep the shloka and typography reliable. */
+@font-face{font-family:"Noto Serif Devanagari";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fast/mangalam-devanagari.woff2") format("woff2");}
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:300 700;font-display:swap;src:url("assets/fast/invitation-serif.woff2") format("woff2");}
+@font-face{font-family:"Great Vibes";font-style:normal;font-weight:400;font-display:swap;src:url("assets/fast/invitation-script.woff2") format("woff2");}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:300 700;font-display:swap;src:url("assets/fast/invitation-sans.woff2") format("woff2");}
+/* Personal story chapters — live text with decorative artwork. */
+.chapter-flourish{display:flex;align-items:center;justify-content:center;gap:15px;color:#c8a36a;width:min(250px,64%);margin:20px auto;line-height:1}
+.chapter-flourish:before,.chapter-flourish:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,currentColor)}
+.chapter-flourish:after{transform:rotate(180deg)}
+.chapter-flourish span{font:400 25px/1 Georgia,serif}
+.mangalam{padding:62px 20px 50px;background:radial-gradient(ellipse at 50% 35%,#722332,#42101c);isolation:isolate}
+.mangalam .eyebrow{font-size:14px;letter-spacing:.28em;margin:0;color:#e4c58c;text-transform:uppercase}
+.mangalam .chapter-flourish{margin-top:16px;margin-bottom:25px}
+.mangalam .shloka{font-family:"Noto Serif Devanagari",serif;font-size:clamp(22px,2.2vw,32px);line-height:1.95;font-weight:400;margin:0;color:#fff0d3;letter-spacing:.01em}
+.mangalam .closing-flourish{width:140px;margin-top:26px;margin-bottom:0;opacity:.75}
+#two-hearts .section-heading h2{font-size:clamp(30px,4.3vw,58px);font-weight:500;line-height:1.15;text-transform:uppercase;letter-spacing:.025em;max-width:1000px;margin:auto}
+.hearts-subtitle{font:italic 400 clamp(19px,2.1vw,25px)/1.5 "Cormorant Garamond",Georgia,serif;color:#7c6455;margin:17px 0 0}
+.destiny-chapter,.alignment-chapter{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 12%,#782b37 0,#581824 58%,#42111b 100%);color:#fff1d7;text-align:center;z-index:901}
+.destiny-chapter{padding:65px 6vw 48px;border-block:1px solid #c1a16a66}
+.destiny-chapter:before,.destiny-chapter:after,.alignment-chapter:before,.note-chapter:before,.note-chapter:after{content:"";position:absolute;width:210px;height:340px;background:url('assets/destiny-botanical.svg') no-repeat center/contain;z-index:-1;pointer-events:none}
+.destiny-chapter:before{left:-12px;top:18px;opacity:.8}
+.destiny-chapter:after{right:-12px;bottom:5px;transform:rotate(180deg);opacity:.8}
+.destiny-heading{position:relative;z-index:1;max-width:860px;margin:0 auto 34px}
+.destiny-chapter .eyebrow,.alignment-chapter .eyebrow{font-size:11px;letter-spacing:.22em;line-height:1.7;color:#e1bf83;margin:0}
+.destiny-heading .chapter-flourish{margin:15px auto 18px}
+.destiny-heading h2{font:500 clamp(36px,4.8vw,66px)/1.05 "Cormorant Garamond",Georgia,serif;margin:0;color:#fff1d7;letter-spacing:-.015em}
+.destiny-heading h2 em{font-weight:400;font-style:italic}
+.destiny-intro{font:400 clamp(18px,1.8vw,22px)/1.5 "Cormorant Garamond",Georgia,serif;margin:20px auto 0;color:#f4dcc0;max-width:540px}
+.destiny-pair{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);align-items:center;gap:26px;max-width:980px;margin:0 auto}
+.destiny-person{margin:0;border:1px solid #cfaa6a;border-radius:28px 28px 6px 6px;background:#fbedd6;overflow:hidden;box-shadow:0 15px 30px #26050d33;color:#5c202b;position:relative}
+.destiny-person:after{content:"";position:absolute;inset:7px;border:1px solid #bd95564a;border-radius:21px 21px 2px 2px;pointer-events:none}
+.destiny-illustration{aspect-ratio:1;background-image:none;background-size:200% 100%;background-repeat:no-repeat;background-color:#f8ecd7}
+.illustration-kailash{background-position:left center}
+.illustration-adwitia{background-position:right center}
+.destiny-caption{position:relative;padding:17px 12px 23px;border-top:1px solid #c7a36855;background:#fff2dd}
+.destiny-caption h3{font:600 30px/1.15 "Cormorant Garamond",Georgia,serif;margin:0;letter-spacing:.07em;text-transform:uppercase}
+.destiny-caption p{font:italic 400 23px/1.25 "Cormorant Garamond",Georgia,serif;margin:4px 0 0;color:#896138}
+.destiny-us{border:1px solid #c8a36a88;outline:1px solid #c8a36a44;outline-offset:7px;border-radius:100px 100px 4px 4px;min-height:228px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;color:#e9ca8c}
+.destiny-us svg{width:48px;height:39px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.destiny-us span{font:500 43px/1 "Cormorant Garamond",Georgia,serif;text-transform:uppercase;color:#fff1d7}
+.destiny-us i{font-style:normal;font-size:13px}
+.destiny-signoff{font:400 clamp(22px,2.1vw,28px)/1.5 "Cormorant Garamond",Georgia,serif;margin:34px 0 0;color:#f4dfbc}
+.destiny-signoff em{font-style:italic;white-space:nowrap}
+.alignment-chapter{padding:53px 22px 55px;background:#571824;border-bottom:1px solid #c1a16a66;overflow:hidden}
+.alignment-chapter:before{left:8px;bottom:-75px;width:240px;height:350px;opacity:.55;transform:rotate(12deg)}
+.alignment-landscape{position:absolute;width:min(35vw,460px);height:auto;right:-25px;bottom:10px;stroke:#c5a167;stroke-width:1.1;opacity:.45;z-index:-1}
+.alignment-inner{max-width:790px;margin:auto}
+.alignment-inner .chapter-flourish{margin:12px auto 18px}
+.alignment-chapter h2{font:500 clamp(34px,4vw,57px)/1.1 "Cormorant Garamond",Georgia,serif;color:#fff1d7;margin:0}
+.alignment-chapter h2 em{font-style:italic;font-weight:400}
+.alignment-note{font:400 21px/1.45 "Cormorant Garamond",Georgia,serif;color:#f0dbbd;margin:18px auto 26px}
+.shared-values{list-style:none;display:flex;justify-content:center;gap:55px;margin:0;padding:0;color:#e4c181}
+.shared-values li{display:flex;align-items:center;flex-direction:column;gap:12px;position:relative;font:500 11px/1.4 "Montserrat",sans-serif;letter-spacing:.17em;text-transform:uppercase;min-width:76px}
+.shared-values li+li:before{content:"";position:absolute;top:31px;right:calc(100% + 9px);width:37px;height:1px;background:linear-gradient(90deg,transparent,#c5a167,transparent)}
+.value-icon{width:64px;height:64px;border:1px solid #c5a16788;border-radius:50%;display:grid;place-items:center}
+.value-icon svg{width:35px;height:35px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.note-chapter{padding:76px 5vw;background:radial-gradient(ellipse at 50% 50%,#fffaf0,#f6e9d9);isolation:isolate;z-index:901}
+.note-layout{max-width:1280px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:45px}
+.note-portrait{position:relative;padding:0;min-width:0}
+.note-portrait svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 12px 24px #5a382616)}
+.note-chapter:before{left:-60px;bottom:-25px;opacity:.6}
+.note-chapter:after{right:-80px;top:-60px;transform:rotate(180deg);opacity:.4}
+.note-copy{text-align:center;min-width:0}
+.note-copy .eyebrow{color:#99753d;font-size:11px;letter-spacing:.22em;margin:0 0 22px}
+.note-copy h2{font:500 clamp(31px,3.2vw,49px)/1.1 "Cormorant Garamond",Georgia,serif;color:#5e202d;margin:0;letter-spacing:-.015em}
+.note-copy .chapter-flourish{margin:22px auto;color:#b48c4f;width:180px}
+.note-names{font:500 17px/1.5 "Cormorant Garamond",Georgia,serif;letter-spacing:.18em;text-transform:uppercase;color:#8f6a35;margin:0 0 18px}
+.note-message{font:400 21px/1.55 "Cormorant Garamond",Georgia,serif;color:#71594c;max-width:540px;margin:0 auto}
+.note-signature{font:400 clamp(26px,2.6vw,35px)/1.4 "Great Vibes",cursive;color:#7d343e;margin:26px 0 0}
+.note-signature span{font-family:Georgia,serif;font-size:1.1em;vertical-align:middle;margin-left:6px}
+.mobile-break{display:none}
+@media(max-width:900px){
+ .destiny-pair{gap:20px;grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr)}
+ .destiny-us{min-height:190px}
+ .note-layout{gap:25px}
+ .note-message{font-size:19px}
+ .note-copy h2{font-size:34px}
+}
+@media(max-width:600px){
+ .mangalam{padding:47px 16px 38px}
+ .mangalam .shloka{font-size:22px;line-height:2}
+ #two-hearts{padding-top:56px;padding-bottom:58px}
+ #two-hearts .section-heading{margin-bottom:32px}
+ #two-hearts .section-heading h2{font-size:30px;line-height:1.18;letter-spacing:.015em}
+ .hearts-subtitle{font-size:20px;max-width:270px;margin:15px auto 0}
+ .destiny-chapter{padding:48px 22px 38px}
+ .destiny-heading{margin-bottom:26px}
+ .destiny-chapter .eyebrow{font-size:10px;letter-spacing:.16em}
+ .destiny-heading h2{font-size:38px;line-height:1.07}
+ .destiny-intro{font-size:19px;max-width:280px;margin-top:18px}
+ .destiny-pair{display:flex;flex-direction:column;gap:23px;max-width:300px}
+ .destiny-person{width:100%}
+ .destiny-caption{padding-top:15px;padding-bottom:19px}
+ .destiny-caption h3{font-size:29px}
+ .destiny-us{width:85px;min-height:85px;border-radius:50%;outline-offset:5px;gap:3px;padding:9px}
+ .destiny-us svg{width:29px;height:24px}
+ .destiny-us span{font-size:26px}
+ .destiny-us i{display:none}
+ .destiny-signoff{font-size:25px;max-width:260px;margin:29px auto 0}
+ .destiny-chapter:before,.destiny-chapter:after{width:130px;opacity:.38}
+ .alignment-chapter{padding:43px 20px 45px}
+ .alignment-chapter h2{font-size:38px;max-width:290px;margin:auto}
+ .alignment-chapter h2 em{display:block}
+ .alignment-note{font-size:20px;max-width:300px}
+ .alignment-note br{display:none}
+ .alignment-landscape{width:230px;opacity:.23;bottom:55px;right:-70px}
+ .alignment-chapter:before{left:-100px;opacity:.3}
+ .shared-values{gap:22px}
+ .shared-values li{font-size:10px;letter-spacing:.1em;min-width:65px;gap:10px}
+ .shared-values li+li:before{width:13px;right:calc(100% + 4px);top:28px}
+ .value-icon{width:57px;height:57px}
+ .value-icon svg{width:31px;height:31px}
+ .note-chapter{padding:44px 18px 48px}
+ .note-layout{grid-template-columns:1fr;gap:31px;max-width:480px}
+ .note-copy h2{font-size:34px}
+ .note-copy .eyebrow{margin-bottom:17px}
+ .note-copy h2 br{display:none}
+ .note-message{font-size:21px;line-height:1.5;padding:0 9px}
+ .note-signature{font-size:31px;margin-top:24px}
+ .mobile-break{display:initial}
+ .note-chapter:before{width:160px;left:-75px;opacity:.35}
+ .note-chapter:after{width:160px;right:-65px;opacity:.3}
+}
+@media(max-width:350px){.destiny-heading h2{font-size:33px}.mangalam .shloka{font-size:20px}.shared-values{gap:14px}.note-copy h2{font-size:31px}}
+/* Keep the brief story together on a single phone screen. */
+@media(max-width:600px){
+ .destiny-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px;max-width:460px}
+ .destiny-kailash{grid-column:1;grid-row:1}
+ .destiny-adwitia{grid-column:2;grid-row:1}
+ .destiny-person{border-radius:19px 19px 5px 5px}
+ .destiny-person:after{inset:5px;border-radius:14px 14px 2px 2px}
+ .destiny-caption{padding:12px 4px 15px}
+ .destiny-caption h3{font-size:clamp(19px,5.6vw,26px);letter-spacing:.025em}
+ .destiny-caption p{font-size:20px}
+ .destiny-us{grid-column:1/-1;grid-row:2;justify-self:center;width:72px;min-height:72px}
+ .destiny-us svg{width:26px;height:21px}
+ .destiny-us span{font-size:24px}
+ .destiny-signoff{margin-top:24px}
+}
+/* Real campus postcards, followed by photo-based caricatures. */
+.campus-journey{display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:26px;align-items:center;max-width:980px;margin:0 auto 45px}
+.campus-postcard{margin:0;padding:17px 14px 18px;background:#fff1d9;border:1px solid #d4b27b;color:#5b202b;box-shadow:0 14px 30px #25070d35;position:relative;border-radius:3px}
+.campus-postcard:after{content:"";position:absolute;inset:5px;border:1px solid #b58d4f44;pointer-events:none}
+.campus-nit{transform:rotate(-2deg)}
+.campus-iit{transform:rotate(2deg)}
+.campus-postcard .postcard-kicker{font:400 25px/1.2 "Great Vibes",cursive;margin:0 0 13px;color:#8c3940}
+.campus-postcard img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover;object-position:center;border:1px solid #bd995d55}
+.campus-postcard h3{font:600 clamp(21px,2vw,27px)/1.15 "Cormorant Garamond",Georgia,serif;margin:14px 0 8px;color:#5b202b}
+.campus-postcard figcaption p{font:400 18px/1.4 "Cormorant Garamond",Georgia,serif;color:#795841;margin:0}
+.campus-connection{color:#ddbe83;text-align:center}
+.campus-connection svg{width:100%;height:auto;display:block;overflow:visible;margin-bottom:10px;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.2}
+.journey-trail{stroke-dasharray:3 5}
+.campus-connection span{font:italic 400 18px/1.4 "Cormorant Garamond",Georgia,serif;display:block}
+.destiny-caption>p:first-of-type{font-size:22px}
+.destiny-caption .person-detail{font:400 18px/1.45 "Cormorant Garamond",Georgia,serif;color:#755844;margin:10px auto 0;max-width:290px;letter-spacing:0}
+.destiny-signoff em{white-space:normal}
+.campus-credits{max-width:620px;margin:25px auto 0;font:400 11px/1.7 "Montserrat",sans-serif;color:#e2cda9;position:relative;z-index:1}
+.campus-credits summary{cursor:pointer;list-style-position:inside;opacity:.8;padding:7px;min-height:32px}
+.campus-credits p{margin:8px 0 0;font-size:11px;line-height:1.8}
+.campus-credits a{text-underline-offset:3px}
+@media(max-width:900px){.campus-journey{grid-template-columns:minmax(0,1fr) 100px minmax(0,1fr);gap:20px}.campus-postcard{padding:16px 12px}.campus-postcard .postcard-kicker{font-size:22px}.campus-connection span{font-size:16px}}
+@media(max-width:600px){
+ .campus-journey{grid-template-columns:1fr;gap:18px;max-width:330px;margin-bottom:34px}
+ .campus-postcard{padding:16px 15px 19px}
+ .campus-postcard .postcard-kicker{font-size:25px}
+ .campus-postcard h3{font-size:25px}
+ .campus-postcard figcaption p{font-size:19px}
+ .campus-nit{transform:rotate(-1.5deg)}
+ .campus-iit{transform:rotate(1.5deg)}
+ .campus-connection{padding:0;position:relative;max-width:250px;margin:auto;display:flex;align-items:center;gap:7px}
+ .campus-connection svg{width:80px;flex:0 0 80px;margin:0;transform:rotate(16deg)}
+ .campus-connection span{font-size:18px;line-height:1.3}
+ .destiny-caption>p:first-of-type{font-size:18px;line-height:1.25;min-height:45px;padding:0 3px}
+ .destiny-caption .person-detail{font-size:16px;line-height:1.35;padding:0 6px;margin-top:7px}
+ .destiny-signoff{max-width:310px;font-size:24px}
+ .campus-credits{font-size:10px;margin-top:20px}
+}
+
+
+/* Download the study illustration only when its chapter approaches. */
+.destiny-chapter.is-near .destiny-illustration{background-image:url("assets/fast/studying.webp")}
+@font-face{font-family:"Noto Serif Bengali";font-style:normal;font-weight:400 600;font-display:swap;src:url("assets/fast/invitation-bengali.woff2") format("woff2")}
+
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 700;font-display:swap;unicode-range:U+0980-09FF;src:url("assets/fast/invitation-bengali.woff2") format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:400 700;font-display:swap;unicode-range:U+0900-097F;src:url("assets/fast/mangalam-devanagari.woff2") format("woff2")}
+
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:400 700;font-display:swap;unicode-range:U+0980-09FF;src:url("assets/fast/invitation-bengali.woff2") format("woff2")}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:400 700;font-display:swap;unicode-range:U+0900-097F;src:url("assets/fast/mangalam-devanagari.woff2") format("woff2")}

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Adwitia and Kailash Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:wedding-20261204-05@kailashprasad.com
+DTSTAMP:20260924T160100Z
+DTSTART:20261205T143000Z
+DTEND:20261205T193000Z
+SUMMARY:Wedding · Adwitia & Kailash
+LOCATION:Vedic Village Spa Resort\, Shikharpur P.O\, Bagu\, Newtown\, Kolkata\, West Bengal 700135
+DESCRIPTION:Wedding begins at 8:00 PM onwards. Venue: Vedic Village Spa Resort, Kolkata.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

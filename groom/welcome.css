@@ -1,0 +1,89 @@
+/* Palace setting with restrained ivory-and-gold invitation details. */
+html{scroll-padding-top:20px;scroll-padding-bottom:95px}
+.hero.welcome-hero{display:grid;align-content:center;min-height:100svh;padding:104px 24px 66px!important;background:#38121c!important;color:#fff3d8;isolation:isolate;z-index:901;overflow:hidden;text-align:center}
+.hero.welcome-hero:before,.hero.welcome-hero:after{content:none!important;display:none!important}
+.welcome-art{display:block;position:absolute;inset:0;z-index:-3;pointer-events:none}
+.welcome-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%}
+.welcome-text-veil{position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 50% 43%,#290c16a3 0%,#32121c70 48%,#210a135c 100%),linear-gradient(180deg,#1e081847,transparent 38%,#220b1854)}
+.welcome-content{position:relative;z-index:1;width:min(100%,900px);margin:auto;padding:12px 25px 22px;text-shadow:0 2px 16px #21080e88}
+.welcome-navigation{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:27px;width:min(920px,calc(100% - 250px));min-height:50px;padding:8px 16px;border-bottom:1px solid #e3c08070;z-index:2}
+.welcome-navigation a{font:500 12px/1.4 "Montserrat",Arial,sans-serif;text-transform:uppercase;letter-spacing:.035em;white-space:nowrap;text-decoration:none;color:#fff0d2;padding:8px 0;text-shadow:0 2px 9px #1e0717}
+.welcome-navigation a[aria-current],.welcome-navigation a:hover{color:#f1cc86}
+.welcome-navigation a:focus-visible,.welcome-button:focus-visible{outline:2px solid #efca88;outline-offset:5px}
+.welcome-invitation{font:500 12px/1.6 "Montserrat",Arial,sans-serif;text-transform:uppercase;letter-spacing:.18em;color:#f6dba8;margin:0 0 20px}
+.welcome-names{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font:500 clamp(58px,6.2vw,88px)/1.05 "Cormorant Garamond",Georgia,serif;color:#fff4df;margin:0;letter-spacing:-.02em}
+.welcome-names>span{display:block;white-space:nowrap}
+.welcome-names em{font:400 .52em/.95 "Great Vibes",cursive;color:#f0c883;padding:2px 0 0;letter-spacing:0}
+.welcome-names:focus-visible{outline:1px dashed #efd39f;outline-offset:8px}
+.welcome-flourish{display:flex;align-items:center;justify-content:center;gap:13px;width:230px;max-width:70%;height:19px;margin:21px auto;color:#e4bf7b}
+.welcome-flourish:before,.welcome-flourish:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,currentColor)}
+.welcome-flourish:after{transform:rotate(180deg)}
+.welcome-flourish span{font:400 24px/1 Georgia,serif}
+.welcome-message{font:400 23px/1.45 "Cormorant Garamond",Georgia,serif;color:#fff0d7;margin:0 auto;max-width:560px}
+.welcome-dates{display:flex;align-items:center;justify-content:center;gap:30px;margin:28px auto 22px;font-family:"Cormorant Garamond",Georgia,serif}
+.welcome-dates>div{display:flex;align-items:center;flex-direction:column;gap:3px;min-width:155px}
+.welcome-dates span{font-size:15px;line-height:1.25;text-transform:uppercase;letter-spacing:.045em;color:#f9e6be}
+.welcome-dates .welcome-weekday{font-size:16px;letter-spacing:.09em}
+.welcome-dates strong{font-size:59px;line-height:1;font-weight:500;color:#fff3db;margin:2px 0}
+.welcome-dates i{display:flex;align-items:center;justify-content:center;position:relative;width:1px;height:94px;background:#d6af67;font-style:normal}
+.welcome-dates i:before,.welcome-dates i:after{content:"";position:absolute;left:50%;width:4px;height:4px;background:#e4bd79;transform:translateX(-50%) rotate(45deg)}
+.welcome-dates i:before{top:0}.welcome-dates i:after{bottom:0}
+.welcome-dates i b{font-size:9px;font-weight:400;color:#f2d49f;line-height:1}
+.welcome-venue{display:flex;align-items:center;justify-content:center;gap:9px;font:500 12px/1.6 "Montserrat",Arial,sans-serif;text-transform:uppercase;letter-spacing:.045em;margin:0 auto 27px;color:#fff1d7}
+.welcome-venue svg{width:16px;height:20px;flex:0 0 16px;fill:#efc780}.welcome-venue svg circle{fill:#612331}.welcome-venue b{font-weight:400;margin:0 3px}
+.welcome-actions{display:flex;align-items:center;justify-content:center;gap:16px;margin:0 auto;max-width:480px;text-shadow:none}
+.welcome-button{display:flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:13px 22px;border:1px solid #d0ab67;text-decoration:none;font:500 12px/1.3 "Montserrat",Arial,sans-serif;letter-spacing:.035em;text-transform:uppercase;border-radius:3px;transition:background .2s,transform .2s;box-shadow:0 6px 20px #20090f33}
+.welcome-button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:0 0 21px}
+.welcome-primary{background:#6d1526ef;color:#ffefcf}.welcome-secondary{background:#fff2dce8;color:#632333;min-width:138px;border-color:#ecd3a8}
+.welcome-primary:hover{background:#8a2137}.welcome-secondary:hover{background:#fff9ea}
+.royal-blessing{position:relative;text-align:center;padding:48px 22px 42px;background:radial-gradient(ellipse at center,#fff9ed,#f6eada);color:#692333;isolation:isolate;z-index:901;border-block:1px solid #bd9b6459}
+.royal-blessing:before,.royal-blessing:after{content:"";position:absolute;z-index:-1;top:0;bottom:0;width:165px;max-width:22%;background:url('assets/destiny-botanical.svg') center/contain no-repeat;opacity:.4;pointer-events:none}
+.royal-blessing:before{left:3%}.royal-blessing:after{right:3%;transform:rotate(180deg)}
+.royal-blessing .welcome-kicker{font:500 13px/1.4 "Montserrat",Arial,sans-serif;text-transform:uppercase;letter-spacing:.25em;color:#9b783e;margin:0}
+.royal-blessing .welcome-flourish{color:#b58d4d;margin:13px auto;width:200px}
+.royal-blessing .welcome-shloka{font:400 clamp(20px,2.1vw,28px)/1.85 "Noto Serif Devanagari",serif;margin:18px auto;color:#752635;letter-spacing:0}
+.royal-blessing .welcome-flower{width:125px;margin-top:18px;margin-bottom:0;color:#a16840}
+#invitationGate .gate-content{display:none}#invitationGate.opened{transition:transform .8s ease,opacity .7s ease;opacity:0;pointer-events:none}
+.page-music-toggle{color:#fff2d9;background:#4a1728df;border-color:#d0ab6777;min-width:44px}
+.page-music-toggle.is-playing:before{content:"";position:absolute;width:6px;height:6px;right:8px;bottom:8px;background:#f0c982;border-radius:50%;box-shadow:0 0 0 2px #f0c98222}
+@media(min-width:901px) and (max-width:1100px){.welcome-navigation{width:calc(100% - 210px);gap:18px;padding-inline:0}.welcome-navigation a{font-size:10px}.welcome-names{font-size:70px}.welcome-content{padding-top:5px}.hero.welcome-hero{padding-top:92px!important;padding-bottom:42px!important}}
+@media(max-width:900px){
+ .welcome-navigation{display:none}.hero.welcome-hero{min-height:calc(100svh - 76px);padding:74px 22px 34px!important}.welcome-content{width:100%;max-width:590px;padding:0}
+ .welcome-art img{object-position:50% 49%}.welcome-text-veil{background:linear-gradient(180deg,#220b174a,#2a0c1985 28%,#30101b8c 64%,#1e09166b)}
+ .welcome-names{font-size:clamp(42px,7.6vw,65px);gap:6px}.welcome-invitation{font-size:11px;letter-spacing:.12em;margin-bottom:19px}.welcome-names em{font-size:.55em}
+ .welcome-message{font-size:22px;max-width:380px}.welcome-desktop-break{display:none}
+ .welcome-dates{margin:24px auto 21px;gap:25px}.welcome-dates>div{min-width:130px}.welcome-dates strong{font-size:55px}
+ .welcome-venue{font-size:11px;max-width:380px;margin-bottom:23px;letter-spacing:.025em}.welcome-button{min-height:49px;font-size:11px;padding:12px 15px;gap:8px}
+ .welcome-actions{gap:12px;max-width:400px}.welcome-primary{flex:1.6}.welcome-secondary{flex:1;min-width:0}
+ .mobile-quick-nav{position:fixed;z-index:1000;display:grid;grid-template-columns:1.15fr 1fr .8fr;left:50%;right:auto;bottom:calc(9px + env(safe-area-inset-bottom));transform:translateX(-50%);width:calc(100% - 28px);max-width:400px;min-height:52px;padding:5px;border:1px solid #d1b07966;border-radius:999px;background:#431622f5;backdrop-filter:blur(14px);box-shadow:0 7px 24px #2108134d}
+ .mobile-quick-nav a{display:flex;align-items:center;justify-content:center;padding:11px 6px;color:#fff0d2;text-decoration:none;text-align:center;font:400 11px/1.2 "Montserrat",Arial,sans-serif;text-transform:uppercase;letter-spacing:.06em;border-radius:999px}
+ .mobile-quick-nav a:focus-visible{outline:1px solid #e3c789;outline-offset:-2px}
+ .page-music-toggle{font-size:0;width:44px;height:44px;padding:0;right:12px;top:12px}.page-music-toggle:after{content:"♫";font-size:20px}
+ .royal-blessing{padding:38px 20px 34px}.royal-blessing .welcome-shloka{font-size:22px;line-height:1.85}
+}
+@media(max-width:600px){
+ .hero.welcome-hero{padding:69px 22px 31px!important}.welcome-names{font-size:clamp(36px,10.7vw,49px);gap:5px}
+ .welcome-invitation{font-size:10px;letter-spacing:.1em;max-width:285px;margin:0 auto 19px}.welcome-message{font-size:21px;line-height:1.35;max-width:310px}.welcome-flourish{width:180px;margin:18px auto}
+ .welcome-dates{margin:21px auto 19px;gap:21px}.welcome-dates>div{min-width:112px}.welcome-dates strong{font-size:48px}.welcome-dates span{font-size:13px;letter-spacing:.015em}.welcome-dates .welcome-weekday{font-size:13px;letter-spacing:.06em}.welcome-dates i{height:80px}
+ .welcome-venue{font-size:12px;line-height:1.6;max-width:310px;gap:6px;margin-bottom:23px}.welcome-venue svg{width:13px;height:17px;flex-basis:13px}
+ .welcome-button{font-size:11px;letter-spacing:.015em;padding:12px 10px;gap:7px}.welcome-button svg{width:18px;height:18px;flex-basis:18px}.welcome-actions{max-width:345px}.royal-blessing .welcome-shloka{font-size:21px}
+}
+@media(max-width:350px){.hero.welcome-hero{padding-inline:18px!important}.welcome-names{font-size:35px}.welcome-message{font-size:20px}.welcome-venue{font-size:11px}.welcome-button{font-size:10px;padding-inline:7px}.welcome-actions{gap:10px}.welcome-dates{gap:15px}.royal-blessing .welcome-shloka{font-size:20px}}
+@media(max-width:900px) and (max-height:650px){.hero.welcome-hero{padding-top:58px!important;padding-bottom:25px!important}.welcome-invitation{margin-bottom:12px}.welcome-names{font-size:35px;gap:3px}.welcome-flourish{margin:13px auto}.welcome-message{font-size:19px}.welcome-dates{margin:16px auto 14px}.welcome-dates strong{font-size:43px}.welcome-dates i{height:73px}.welcome-venue{margin-bottom:18px}.welcome-button{min-height:46px}}
+@media(prefers-reduced-motion:reduce){#invitationGate.opened,.welcome-button{transition:none!important}}
+@media(max-width:900px) and (max-height:500px) and (orientation:landscape){
+ .hero.welcome-hero{min-height:calc(100svh - 70px);padding:54px 26px 26px!important}
+ .welcome-content{display:grid;grid-template-columns:1.1fr 1fr;gap:12px 28px;align-items:center;max-width:780px}
+ .welcome-invitation{grid-column:1;grid-row:1;margin:0;font-size:9px;max-width:none;align-self:end}
+ .welcome-names{grid-column:1;grid-row:2/5;font-size:34px;gap:3px}
+ .welcome-content>.welcome-flourish,.welcome-message{display:none}
+ .welcome-dates{grid-column:2;grid-row:1/3;margin:0;gap:18px}
+ .welcome-dates strong{font-size:40px}.welcome-dates i{height:72px}
+ .welcome-venue{grid-column:2;grid-row:3;font-size:9px;max-width:none;margin:0}
+ .welcome-actions{grid-column:2;grid-row:4;gap:9px;max-width:none;width:100%}
+ .welcome-button{font-size:9px;min-height:44px;padding:10px 9px}
+}
+
+/* Two complete shloka lines, including on small phones. */
+.royal-blessing .welcome-shloka{font-size:clamp(14px,4.1vw,28px);line-height:2;margin-inline:auto}
+.royal-blessing .welcome-shloka .shloka-line{display:block;white-space:nowrap}
