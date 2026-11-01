@@ -152,7 +152,7 @@ addEventListener('scroll',drawStoryThread,{passive:true});addEventListener('resi
     toggle.hidden=motion.matches;
     toggle.setAttribute('aria-pressed',String(!userPaused));
     toggle.textContent=userPaused?'Play slideshow':'Pause slideshow';
-    if(canPlay()) timer=setTimeout(()=>show(current+1,false),5000);
+    if(canPlay()) timer=setTimeout(()=>show(current+1,false),2500);
   }
   async function show(next,manual=true){
     target=(next+slides.length)%slides.length;
